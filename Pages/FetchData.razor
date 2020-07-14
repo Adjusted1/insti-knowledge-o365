@@ -1,0 +1,50 @@
+﻿@page "/fetchdata"
+
+@using blazor_base.Data
+@*@inject WeatherForecastService ForecastService*@
+@inject O365Data O365txt
+
+<h1>Institutional Knowledge Learner on O365</h1>
+
+<p>This Connects to O365 content (as text) and fetches data to feed to Kmeans model</p>
+
+@if (O365txt == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                @*<th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@o365Data.Subject</td>
+            </tr>
+            
+        </tbody>
+    </table>
+}
+
+@code {
+    //private WeatherForecast[] forecasts;
+
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    //}
+    private O365Data o365Data;
+
+    protected override async Task OnInitializedAsync()
+    {
+        o365Data = new O365Data();
+    }
+}
+
+
