@@ -27,7 +27,6 @@ namespace blazor_base
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            //services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<O365Data>();
         }
 

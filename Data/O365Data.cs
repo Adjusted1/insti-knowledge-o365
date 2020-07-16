@@ -9,5 +9,6 @@ namespace blazor_base.Data
         public int MsgNum { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
+        public int Centroid { get; set; } // eg this msg belongs to which group/centroid?
     }
 }
