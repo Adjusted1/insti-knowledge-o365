@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,7 +37,7 @@ namespace Institutional_Knowledge_Learner_VSTO
             double[][] centroids = kmeans.Centroids;
             labels = clusters.Decide(observations);
             double err = kmeans.Error;
-            MessageBox.Show("Within Cluster mean err: " + err.ToString());
+            //MessageBox.Show("Within Cluster mean err: " + err.ToString());
         }
         private static T[,] To2D<T>(T[][] source)
         {
@@ -59,58 +59,58 @@ namespace Institutional_Knowledge_Learner_VSTO
             }
         }
         // http://www.alglib.net AHC hierarchical clustering implementation
-        public void AHC(double[][] observations, int k)
-        {
-            // *** todo:
-            // *** 
-            // ***      move Hierarchichal kmeans to separate method
-            // ***
-            // ***
-            //
-            // The very simple clusterization example
-            //
-            // We have a set of points in 2D space:
-            //     (P0,P1,P2,P3,P4) = ((1,1),(1,2),(4,1),(2,3),(4,1.5))
-            //
-            //  |
-            //  |     P3
-            //  |
-            //  | P1          
-            //  |             P4
-            //  | P0          P2
-            //  |-------------------------
-            //
-            // We want to perform Agglomerative Hierarchic Clusterization (AHC),
-            // using complete linkage (default algorithm) and Euclidean distance
-            // (default metric).
-            //
-            // In order to do that, we:
-            // * create clusterizer with clusterizercreate()
-            // * set points XY and metric (2=Euclidean) with clusterizersetpoints()
-            // * run AHC algorithm with clusterizerrunahc
-            //
-            // You may see that clusterization itself is a minor part of the example,
-            // most of which is dominated by comments :)
-            //
-            alglib.clusterizerstate s;
+        //public void AHC(double[][] observations, int k)
+        //{
+        //    // *** todo:
+        //    // *** 
+        //    // ***      move Hierarchichal kmeans to separate method
+        //    // ***
+        //    // ***
+        //    //
+        //    // The very simple clusterization example
+        //    //
+        //    // We have a set of points in 2D space:
+        //    //     (P0,P1,P2,P3,P4) = ((1,1),(1,2),(4,1),(2,3),(4,1.5))
+        //    //
+        //    //  |
+        //    //  |     P3
+        //    //  |
+        //    //  | P1          
+        //    //  |             P4
+        //    //  | P0          P2
+        //    //  |-------------------------
+        //    //
+        //    // We want to perform Agglomerative Hierarchic Clusterization (AHC),
+        //    // using complete linkage (default algorithm) and Euclidean distance
+        //    // (default metric).
+        //    //
+        //    // In order to do that, we:
+        //    // * create clusterizer with clusterizercreate()
+        //    // * set points XY and metric (2=Euclidean) with clusterizersetpoints()
+        //    // * run AHC algorithm with clusterizerrunahc
+        //    //
+        //    // You may see that clusterization itself is a minor part of the example,
+        //    // most of which is dominated by comments :)
+        //    //
+        //    alglib.clusterizerstate s;
 
 
-            //alglib.ahcreport rep;
+        //    //alglib.ahcreport rep;
 
-            alglib.kmeansreport kmrep;
+        //    alglib.kmeansreport kmrep;
 
-            //observations = StripNulls(observations);
+        //    //observations = StripNulls(observations);
 
-            double[,] xy = To2D(observations);
+        //    double[,] xy = To2D(observations);
 
-            //var newArray = Array.ConvertAll(xy, item => (Array)item);
-            alglib.clusterizercreate(out s);
-            alglib.clusterizersetpoints(s, xy, 2);
-            alglib.clusterizerrunkmeans(s, k, out kmrep);
-            //alglib.clusterizerrunahc(s, out rep);
-            //kmeans
-            int[] labels = kmrep.cidx;
-        }
+        //    //var newArray = Array.ConvertAll(xy, item => (Array)item);
+        //    alglib.clusterizercreate(out s);
+        //    alglib.clusterizersetpoints(s, xy, 2);
+        //    alglib.clusterizerrunkmeans(s, k, out kmrep);
+        //    //alglib.clusterizerrunahc(s, out rep);
+        //    //kmeans
+        //    int[] labels = kmrep.cidx;
+        //}
 
     }
 }

@@ -24,6 +24,32 @@
     ".NETCoreApp,Version=v3.1": {
       "blazor_base/1.0.0": {
         "dependencies": {
+          "Accord": "3.8.2.0",
+          "Accord.MachineLearning": "3.8.2.0",
+          "Accord.MachineLearning.GPL": "3.8.2.0",
+          "Accord.Math.Core": "3.8.2.0",
+          "Accord.Math": "3.8.2.0",
+          "Accord.Statistics": "3.8.2.0",
+          "Centivus.EnglishStemmer": "1.0.0.0",
+          "Institutional_Knowledge_Learner_VSTO": "1.0.0.0",
+          "Microsoft.Data.DataView": "1.0.0.0",
+          "Microsoft.ML.Core": "1.0.0.0",
+          "Microsoft.ML.CpuMath": "1.0.0.0",
+          "Microsoft.ML.Data": "1.0.0.0",
+          "Microsoft.ML.Ensemble": "1.0.0.0",
+          "Microsoft.ML.FastTree": "1.0.0.0",
+          "Microsoft.ML.KMeansClustering": "1.0.0.0",
+          "Microsoft.ML.Maml": "1.0.0.0",
+          "Microsoft.ML.PCA": "1.0.0.0",
+          "Microsoft.ML.ResultProcessor": "1.0.0.0",
+          "Microsoft.ML.SamplesUtils": "1.0.0.0",
+          "Microsoft.ML.StandardLearners": "1.0.0.0",
+          "Microsoft.ML.Sweeper": "1.0.0.0",
+          "Microsoft.ML.Transforms": "1.0.0.0",
+          "Microsoft.Office.Tools.Common.v4.0.Utilities": "10.0.0.0",
+          "Microsoft.Office.Tools.Outlook.v4.0.Utilities": "10.0.0.0",
+          "Newtonsoft.Json": "10.0.0.0",
+          "System.CodeDom": "4.0.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -312,6 +338,292 @@
         },
         "compile": {
           "blazor_base.dll": {}
+        }
+      },
+      "Accord/3.8.2.0": {
+        "runtime": {
+          "Accord.dll": {
+            "assemblyVersion": "3.8.2.0",
+            "fileVersion": "3.8.2.6153"
+          }
+        },
+        "compile": {
+          "Accord.dll": {}
+        }
+      },
+      "Accord.MachineLearning/3.8.2.0": {
+        "runtime": {
+          "Accord.MachineLearning.dll": {
+            "assemblyVersion": "3.8.2.0",
+            "fileVersion": "3.8.2.6153"
+          }
+        },
+        "compile": {
+          "Accord.MachineLearning.dll": {}
+        }
+      },
+      "Accord.MachineLearning.GPL/3.8.2.0": {
+        "runtime": {
+          "Accord.MachineLearning.GPL.dll": {
+            "assemblyVersion": "3.8.2.0",
+            "fileVersion": "3.8.2.6153"
+          }
+        },
+        "compile": {
+          "Accord.MachineLearning.GPL.dll": {}
+        }
+      },
+      "Accord.Math.Core/3.8.2.0": {
+        "runtime": {
+          "Accord.Math.Core.dll": {
+            "assemblyVersion": "3.8.2.0",
+            "fileVersion": "3.8.2.6153"
+          }
+        },
+        "compile": {
+          "Accord.Math.Core.dll": {}
+        }
+      },
+      "Accord.Math/3.8.2.0": {
+        "runtime": {
+          "Accord.Math.dll": {
+            "assemblyVersion": "3.8.2.0",
+            "fileVersion": "3.8.2.6153"
+          }
+        },
+        "compile": {
+          "Accord.Math.dll": {}
+        }
+      },
+      "Accord.Statistics/3.8.2.0": {
+        "runtime": {
+          "Accord.Statistics.dll": {
+            "assemblyVersion": "3.8.2.0",
+            "fileVersion": "3.8.2.6153"
+          }
+        },
+        "compile": {
+          "Accord.Statistics.dll": {}
+        }
+      },
+      "Centivus.EnglishStemmer/1.0.0.0": {
+        "runtime": {
+          "Centivus.EnglishStemmer.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "Centivus.EnglishStemmer.dll": {}
+        }
+      },
+      "Institutional_Knowledge_Learner_VSTO/1.0.0.0": {
+        "runtime": {
+          "Institutional_Knowledge_Learner_VSTO.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "Institutional_Knowledge_Learner_VSTO.dll": {}
+        }
+      },
+      "Microsoft.Data.DataView/1.0.0.0": {
+        "runtime": {
+          "Microsoft.Data.DataView.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "0.10.27405.9"
+          }
+        },
+        "compile": {
+          "Microsoft.Data.DataView.dll": {}
+        }
+      },
+      "Microsoft.ML.Core/1.0.0.0": {
+        "runtime": {
+          "Microsoft.ML.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "0.10.27405.9"
+          }
+        },
+        "compile": {
+          "Microsoft.ML.Core.dll": {}
+        }
+      },
+      "Microsoft.ML.CpuMath/1.0.0.0": {
+        "runtime": {
+          "Microsoft.ML.CpuMath.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "0.10.27405.9"
+          }
+        },
+        "compile": {
+          "Microsoft.ML.CpuMath.dll": {}
+        }
+      },
+      "Microsoft.ML.Data/1.0.0.0": {
+        "runtime": {
+          "Microsoft.ML.Data.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "0.10.27405.9"
+          }
+        },
+        "compile": {
+          "Microsoft.ML.Data.dll": {}
+        }
+      },
+      "Microsoft.ML.Ensemble/1.0.0.0": {
+        "runtime": {
+          "Microsoft.ML.Ensemble.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "0.10.27405.9"
+          }
+        },
+        "compile": {
+          "Microsoft.ML.Ensemble.dll": {}
+        }
+      },
+      "Microsoft.ML.FastTree/1.0.0.0": {
+        "runtime": {
+          "Microsoft.ML.FastTree.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "0.10.27405.9"
+          }
+        },
+        "compile": {
+          "Microsoft.ML.FastTree.dll": {}
+        }
+      },
+      "Microsoft.ML.KMeansClustering/1.0.0.0": {
+        "runtime": {
+          "Microsoft.ML.KMeansClustering.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "0.10.27405.9"
+          }
+        },
+        "compile": {
+          "Microsoft.ML.KMeansClustering.dll": {}
+        }
+      },
+      "Microsoft.ML.Maml/1.0.0.0": {
+        "runtime": {
+          "Microsoft.ML.Maml.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "0.10.27405.9"
+          }
+        },
+        "compile": {
+          "Microsoft.ML.Maml.dll": {}
+        }
+      },
+      "Microsoft.ML.PCA/1.0.0.0": {
+        "runtime": {
+          "Microsoft.ML.PCA.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "0.10.27405.9"
+          }
+        },
+        "compile": {
+          "Microsoft.ML.PCA.dll": {}
+        }
+      },
+      "Microsoft.ML.ResultProcessor/1.0.0.0": {
+        "runtime": {
+          "Microsoft.ML.ResultProcessor.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "0.10.27405.9"
+          }
+        },
+        "compile": {
+          "Microsoft.ML.ResultProcessor.dll": {}
+        }
+      },
+      "Microsoft.ML.SamplesUtils/1.0.0.0": {
+        "runtime": {
+          "Microsoft.ML.SamplesUtils.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "0.10.27405.9"
+          }
+        },
+        "compile": {
+          "Microsoft.ML.SamplesUtils.dll": {}
+        }
+      },
+      "Microsoft.ML.StandardLearners/1.0.0.0": {
+        "runtime": {
+          "Microsoft.ML.StandardLearners.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "0.10.27405.9"
+          }
+        },
+        "compile": {
+          "Microsoft.ML.StandardLearners.dll": {}
+        }
+      },
+      "Microsoft.ML.Sweeper/1.0.0.0": {
+        "runtime": {
+          "Microsoft.ML.Sweeper.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "0.10.27405.9"
+          }
+        },
+        "compile": {
+          "Microsoft.ML.Sweeper.dll": {}
+        }
+      },
+      "Microsoft.ML.Transforms/1.0.0.0": {
+        "runtime": {
+          "Microsoft.ML.Transforms.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "0.10.27405.9"
+          }
+        },
+        "compile": {
+          "Microsoft.ML.Transforms.dll": {}
+        }
+      },
+      "Microsoft.Office.Tools.Common.v4.0.Utilities/10.0.0.0": {
+        "runtime": {
+          "Microsoft.Office.Tools.Common.v4.0.Utilities.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.30319.1"
+          }
+        },
+        "compile": {
+          "Microsoft.Office.Tools.Common.v4.0.Utilities.dll": {}
+        }
+      },
+      "Microsoft.Office.Tools.Outlook.v4.0.Utilities/10.0.0.0": {
+        "runtime": {
+          "Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.30319.1"
+          }
+        },
+        "compile": {
+          "Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll": {}
+        }
+      },
+      "Newtonsoft.Json/10.0.0.0": {
+        "runtime": {
+          "Newtonsoft.Json.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.3.21018"
+          }
+        },
+        "compile": {
+          "Newtonsoft.Json.dll": {}
+        }
+      },
+      "System.CodeDom/4.0.0.0": {
+        "runtime": {
+          "System.CodeDom.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.25519.3"
+          }
+        },
+        "compile": {
+          "System.CodeDom.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -2011,6 +2323,136 @@
   "libraries": {
     "blazor_base/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Accord/3.8.2.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Accord.MachineLearning/3.8.2.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Accord.MachineLearning.GPL/3.8.2.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Accord.Math.Core/3.8.2.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Accord.Math/3.8.2.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Accord.Statistics/3.8.2.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Centivus.EnglishStemmer/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Institutional_Knowledge_Learner_VSTO/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Data.DataView/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.ML.Core/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.ML.CpuMath/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.ML.Data/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.ML.Ensemble/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.ML.FastTree/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.ML.KMeansClustering/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.ML.Maml/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.ML.PCA/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.ML.ResultProcessor/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.ML.SamplesUtils/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.ML.StandardLearners/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.ML.Sweeper/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.ML.Transforms/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Office.Tools.Common.v4.0.Utilities/10.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Office.Tools.Outlook.v4.0.Utilities/10.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Newtonsoft.Json/10.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.CodeDom/4.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     },

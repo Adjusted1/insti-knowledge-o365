@@ -16,24 +16,20 @@ using System.Threading.Tasks;
 
 namespace Institutional_Knowledge_Learner_VSTO
 {
-    public class Main
+    public class Ingestor
     {
-        public static int numberOfDocs = 65536; // max number messages allowed for now
-        public static int k { get; set; }
+        static int numberOfDocs { get; set; } = 65536; // max number messages allowed for now
+        static int k { get; set; } = 8;
 
-        public string numstr = null;
-        public string kstr = null;
+        string numstr = null;
+        string kstr = null;
 
         double[][] observations = new double[numberOfDocs][];
-        public string[] documents = new string[numberOfDocs];
+        string[] documents = new string[numberOfDocs];
 
-        public static List<string> subFolderAllWords = new List<string>();
-        public static List<string> subFolderTopWords = new List<string>();
-
-        //Outlook.Application outlookApplication = null;
-        //NameSpace outlookNamespace = null;
-        //MAPIFolder inboxFolder = null;
-        //Items mailItems = null;
+        static List<string> subFolderAllWords = new List<string>();
+        static List<string> subFolderTopWords = new List<string>();
+        Ingestor() { }
 
         private static String Remove(String s)
         {
@@ -45,7 +41,7 @@ namespace Institutional_Knowledge_Learner_VSTO
             var combined = "";
             try
             {
-                foreach (string s in this.documents) /*item.Body.Split(' ')*/)
+                foreach (string s in this.documents) /*item.Body.Split(' ')*/
                 {
                     combined += s + " "; 
                 }
@@ -92,7 +88,7 @@ namespace Institutional_Knowledge_Learner_VSTO
                             }
                             catch (System.Exception exc)
                             {
-                                MessageBox.Show(exc.ToString());
+                                ///MessageBox.Show(exc.ToString());
                             }
                             break;
                         }
@@ -128,7 +124,6 @@ namespace Institutional_Knowledge_Learner_VSTO
                 //    ".", "Find Folder Name");
             }
         }
-
         private void StuffFolders(int[] labels)
         {
             //ClearFolders(new List<string>{ "clustered-0","clustered-1","clustered-2","clustered-3","clustered-4","clustered-5","clustered-6","clustered-7"});
@@ -216,12 +211,11 @@ namespace Institutional_Knowledge_Learner_VSTO
             //Outlook.Folder root = Application.Session.DefaultStore.GetRootFolder() as Outlook.Folder;
             EnumerateFoldersGetTopWordsPerFolder();
         }
-
         // Uses recursion to enumerate Outlook subfolders.
         private void EnumerateFoldersGetTopWordsPerFolder()
         {
             string dummy = "noinput";
-            InputBox("Done!", "Finished, You may label your email clusters", ref dummy);
+            //InputBox("Done!", "Finished, You may label your email clusters", ref dummy);
             //Outlook.Folders childFolders = null;
             //try
             //{
@@ -328,7 +322,7 @@ namespace Institutional_Knowledge_Learner_VSTO
 
             Task.Run(() => NonBlockingDialogs());
 
-            InputBox("Click OK when parameters have been entered", "-> Ready to Tidy up your Inbox? <-", ref dummy);
+            //InputBox("Click OK when parameters have been entered", "-> Ready to Tidy up your Inbox? <-", ref dummy);
             //InputBox("Enter the number of Email Categories you want the AI to fill in", "Enter number of Centroids(k): ", ref kstr);
             //while ((numstr == null) && (kstr == null))
             //{
@@ -356,21 +350,18 @@ namespace Institutional_Knowledge_Learner_VSTO
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InternalStartup()
-        {
-            //this.Startup += new System.EventHandler(ThisAddIn_Startup);
-            //this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);
-            //this.Application.ItemLoad += ApplicationItemLoad;
-        }
-
-        private void NonBlockingDialogs()
-        {
-            InputBox("Select # Inbox Messages to process ", "Max = 65536: ", ref numstr);
-            InputBox("Enter the number of Email Categories you want", "Max = 128: ", ref kstr);
-        }
-
+        //private void InternalStartup()
+        //{
+        //    //this.Startup += new System.EventHandler(ThisAddIn_Startup);
+        //    //this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);
+        //    //this.Application.ItemLoad += ApplicationItemLoad;
+        //}
+        //private void NonBlockingDialogs()
+        //{
+        //    //InputBox("Select # Inbox Messages to process ", "Max = 65536: ", ref numstr);
+        //    //InputBox("Enter the number of Email Categories you want", "Max = 128: ", ref kstr);
+        //}
         #endregion
-
         //public static DialogResult InputBox(string title, string promptText, ref string value)
         //{
         //    Form form = new Form();

@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EnglishStemmer;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 
 namespace Institutional_Knowledge_Learner_VSTO
 {
@@ -51,7 +51,6 @@ namespace Institutional_Knowledge_Learner_VSTO
 
     static class tfidf
     {
-
         public static class TFIDF
         {
             /// <summary>
@@ -262,7 +261,7 @@ namespace Institutional_Knowledge_Learner_VSTO
                                 }
                             }
                         }
-                        catch (Exception e) { MessageBox.Show(e.ToString()); }
+                        catch (Exception e) { /*MessageBox.Show(e.ToString());*/ }
 
                         stemmedDocs.Add(stemmedDoc);
                     }

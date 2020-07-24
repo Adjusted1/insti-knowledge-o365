@@ -4,4 +4,85 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="Accord">
+      <HintPath>DLLs\Accord.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.MachineLearning">
+      <HintPath>DLLs\Accord.MachineLearning.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.MachineLearning.GPL">
+      <HintPath>DLLs\Accord.MachineLearning.GPL.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math">
+      <HintPath>DLLs\Accord.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math.Core">
+      <HintPath>DLLs\Accord.Math.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Statistics">
+      <HintPath>DLLs\Accord.Statistics.dll</HintPath>
+    </Reference>
+    <Reference Include="Centivus.EnglishStemmer">
+      <HintPath>DLLs\Centivus.EnglishStemmer.dll</HintPath>
+    </Reference>
+    <Reference Include="Institutional_Knowledge_Learner_VSTO">
+      <HintPath>DLLs\Institutional_Knowledge_Learner_VSTO.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.DataView">
+      <HintPath>DLLs\Microsoft.Data.DataView.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.Core">
+      <HintPath>DLLs\Microsoft.ML.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.CpuMath">
+      <HintPath>DLLs\Microsoft.ML.CpuMath.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.Data">
+      <HintPath>DLLs\Microsoft.ML.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.Ensemble">
+      <HintPath>DLLs\Microsoft.ML.Ensemble.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.FastTree">
+      <HintPath>DLLs\Microsoft.ML.FastTree.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.KMeansClustering">
+      <HintPath>DLLs\Microsoft.ML.KMeansClustering.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.Maml">
+      <HintPath>DLLs\Microsoft.ML.Maml.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.PCA">
+      <HintPath>DLLs\Microsoft.ML.PCA.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.ResultProcessor">
+      <HintPath>DLLs\Microsoft.ML.ResultProcessor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.SamplesUtils">
+      <HintPath>DLLs\Microsoft.ML.SamplesUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.StandardLearners">
+      <HintPath>DLLs\Microsoft.ML.StandardLearners.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.Sweeper">
+      <HintPath>DLLs\Microsoft.ML.Sweeper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.Transforms">
+      <HintPath>DLLs\Microsoft.ML.Transforms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Common.v4.0.Utilities">
+      <HintPath>DLLs\Microsoft.Office.Tools.Common.v4.0.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Outlook.v4.0.Utilities">
+      <HintPath>DLLs\Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>DLLs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CodeDom">
+      <HintPath>DLLs\System.CodeDom.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
