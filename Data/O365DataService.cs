@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace blazor_base.Data
+namespace blazor_base
 {
     public class O365DataService
     {

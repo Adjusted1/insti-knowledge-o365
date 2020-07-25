@@ -10,7 +10,7 @@ using System.Xml.Linq;
 //using Microsoft.Office.Interop.Outlook;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-//using static Institutional_Knowledge_Learner_VSTO.tfidf;
+using static Institutional_Knowledge_Learner_VSTO.tfidf;
 using System.Drawing;
 using System.Threading.Tasks;
 
@@ -320,7 +320,7 @@ namespace Institutional_Knowledge_Learner_VSTO
         {
             string dummy = "noinput";
 
-            Task.Run(() => NonBlockingDialogs());
+            //Task.Run(() => NonBlockingDialogs());
 
             //InputBox("Click OK when parameters have been entered", "-> Ready to Tidy up your Inbox? <-", ref dummy);
             //InputBox("Enter the number of Email Categories you want the AI to fill in", "Enter number of Centroids(k): ", ref kstr);
