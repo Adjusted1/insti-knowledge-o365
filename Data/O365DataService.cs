@@ -9,7 +9,7 @@ namespace blazor_base
     {
         public Task<O365Data> GetO365DataAsync()
         {
-            return Task.FromResult(new O365Data
+            return System.Threading.Tasks.Task.FromResult(new O365Data
             {
             });
         }
