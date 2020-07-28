@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "2VRHrTHNlNGX3Wo2CL4ykmqh4i1hVni+yHeFB6z63aJH787y6sZt29w9dojcbFqVjyY1dxKjx4yKnajsEhX8lA==",
+  "dgSpecHash": "8o71mZbIfZif5UDj5IzYCnzz0czBx9F88E/cM93XqjKviZS6+/xQKA8wd8HAE30rfvRgVzn1ivc0yLRH6rcwag==",
   "success": true,
   "projectFilePath": "C:\\Users\\Owner\\blazor_base\\blazor_base.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Owner\\.nuget\\packages\\microsoft.exchange.webservices\\2.2.0\\microsoft.exchange.webservices.2.2.0.nupkg.sha512"
+    "C:\\Users\\Owner\\.nuget\\packages\\microsoft.exchange.webservices\\2.2.0\\microsoft.exchange.webservices.2.2.0.nupkg.sha512",
+    "C:\\Users\\Owner\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Owner\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\Owner\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
+    "C:\\Users\\Owner\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512"
   ],
   "logs": [
     {

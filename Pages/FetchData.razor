@@ -5,44 +5,62 @@
 
 <h1>Institutional Knowledge Learner on O365</h1>
 
-<p>This WebApp consumes O365 content data to feed to an ML model that will categorize your unstructured text for you</p>
+<p>This WebApp consumes O365 content data to feed to an ML model that will categorize your unstructured o365 email messages</p>
 
-@if (O365txt == null)
+@if(O365txt == null)
 {
-    <p><em>Loading...</em></p>
+    <div class="spinner-border">hello</div>
 }
 else
 {
     <table class="table">
         <thead>
             <tr>
-                <th>Msg Num</th>
                 <th>Subject</th>
-                <th>Body</th>
-                <th>Centroid #</th>
+                <th>Username</th>
+                <th>Password</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>@o365Data.Subject</td>
+                <td>@o365Data.Username</td>
+                <td>@o365Data.Password</td>
             </tr>
-            
+
         </tbody>
     </table>
 }
 
-@code {
-    //private WeatherForecast[] forecasts;
+<EditForm Model="@O365txt" OnValidSubmit="SendCredsGetData">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
 
-    //protected override async Task OnInitializedAsync()
-    //{
-    //    forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
-    //}
+    <InputText id="Username" @bind-Value="o365Data.Username" />
+    <InputText id="Password" @bind-Value="o365Data.Password" />
+
+    <button type="submit">Submit Password</button>
+</EditForm>
+
+
+@code {
+
     private O365Data o365Data;
 
     protected override async Task OnInitializedAsync()
     {
+        // spinner test
+        // failed System.Threading.Thread.Sleep(5000);
+        // it gets here and outputs to debug OK
+        System.Diagnostics.Debug.WriteLine("async service broker invoked from client action");
         o365Data = new O365Data();
+    }
+
+    public void SendCredsGetData()
+    {
+        System.Diagnostics.Debug.WriteLine(o365Data.Username + " " + o365Data.Password);
+        o365Data.GetData();
+        System.Diagnostics.Debug.WriteLine(o365Data.Username + " " + o365Data.Password);
     }
 }
 
