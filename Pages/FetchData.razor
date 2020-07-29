@@ -3,29 +3,32 @@
 @using blazor_base
 @inject O365Data O365txt
 
-<h1>Institutional Knowledge Learner on O365</h1>
+<h1>O:365 C:luster P:harm</h1>
 
-<p>This WebApp consumes O365 content data to feed to an ML model that will categorize your unstructured o365 email messages</p>
+<p>This WebApp consumes O365 email data and tries to organize it better than you can :p</p>
 
-@if(O365txt == null)
+@if(!submissionSuccess)
 {
-    <div class="spinner-border">hello</div>
+    <p>Enter C:reds</p>
 }
 else
 {
     <table class="table">
         <thead>
-            <tr>
-                <th>Subject</th>
-                <th>Username</th>
-                <th>Password</th>
-            </tr>
+            @foreach (string s in o365Data.Subject)
+            {
+                <tr>
+                    <th>Subject</th>
+                    <th>Body</th>
+                    <th>Centroid</th>
+                </tr>
+            }
         </thead>
         <tbody>
             <tr>
                 <td>@o365Data.Subject</td>
-                <td>@o365Data.Username</td>
-                <td>@o365Data.Password</td>
+                <td>@o365Data.Body</td>
+                <td>@o365Data.Centroid</td>
             </tr>
 
         </tbody>
@@ -35,17 +38,18 @@ else
 <EditForm Model="@O365txt" OnValidSubmit="SendCredsGetData">
     <DataAnnotationsValidator />
     <ValidationSummary />
+    e:mail
+    <InputText id="Username" @bind-Value="o365Data.Username"></InputText>
+    p:assword
+    <InputText id="Password" @bind-Value="o365Data.Password"></InputText>
 
-    <InputText id="Username" @bind-Value="o365Data.Username" />
-    <InputText id="Password" @bind-Value="o365Data.Password" />
-
-    <button type="submit">Submit Password</button>
+    <button @ref=buttonSend id="submitter" type="submit">G:et S:ome D:ata </button>
 </EditForm>
 
 
 @code {
 
-    private O365Data o365Data;
+    private O365Data o365Data = null;
 
     protected override async Task OnInitializedAsync()
     {
@@ -56,11 +60,14 @@ else
         o365Data = new O365Data();
     }
 
+
+    private ElementReference buttonSend;
+    private bool submissionSuccess = false;
+
     public void SendCredsGetData()
     {
-        System.Diagnostics.Debug.WriteLine(o365Data.Username + " " + o365Data.Password);
         o365Data.GetData();
-        System.Diagnostics.Debug.WriteLine(o365Data.Username + " " + o365Data.Password);
+        if(o365Data != null) { submissionSuccess = true; }
     }
 }
 

@@ -37,6 +37,7 @@ C:\Users\Owner\blazor_base\bin\Debug\netcoreapp3.1\Microsoft.Office.Tools.Common
 C:\Users\Owner\blazor_base\bin\Debug\netcoreapp3.1\Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll
 C:\Users\Owner\blazor_base\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Owner\blazor_base\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+C:\Users\Owner\blazor_base\obj\Debug\netcoreapp3.1\blazor_base.csprojAssemblyReference.cache
 C:\Users\Owner\blazor_base\obj\Debug\netcoreapp3.1\blazor_base.AssemblyInfoInputs.cache
 C:\Users\Owner\blazor_base\obj\Debug\netcoreapp3.1\blazor_base.AssemblyInfo.cs
 C:\Users\Owner\blazor_base\obj\Debug\netcoreapp3.1\blazor_base.csproj.CoreCompileInputs.cache
@@ -74,4 +75,3 @@ C:\Users\Owner\blazor_base\obj\Debug\netcoreapp3.1\staticwebassets\blazor_base.S
 C:\Users\Owner\blazor_base\obj\Debug\netcoreapp3.1\blazor_base.dll
 C:\Users\Owner\blazor_base\obj\Debug\netcoreapp3.1\blazor_base.pdb
 C:\Users\Owner\blazor_base\obj\Debug\netcoreapp3.1\blazor_base.genruntimeconfig.cache
-C:\Users\Owner\blazor_base\obj\Debug\netcoreapp3.1\blazor_base.csprojAssemblyReference.cache
