@@ -15,23 +15,22 @@ else
 {
     <table class="table">
         <thead>
-            @foreach (string s in o365Data.Subject)
-            {
                 <tr>
                     <th>Subject</th>
                     <th>Body</th>
                     <th>Centroid</th>
                 </tr>
-            }
         </thead>
         <tbody>
-            <tr>
-                <td>@o365Data.Subject</td>
-                <td>@o365Data.Body</td>
-                <td>@o365Data.Centroid</td>
-            </tr>
-
-        </tbody>
+            @foreach (string s in o365Data.Subject)
+            {
+                <tr>
+                    <td>@s</td>
+                    @*<td>@o365Data.Body</td>
+                    <td>@o365Data.Centroid</td>*@
+                </tr>
+            }
+            </tbody>
     </table>
 }
 
@@ -41,7 +40,7 @@ else
     e:mail
     <InputText id="Username" @bind-Value="o365Data.Username"></InputText>
     p:assword
-    <InputText id="Password" @bind-Value="o365Data.Password"></InputText>
+    <InputText id="Password" @bind-Value="o365Data.Password" type="password"></InputText>
 
     <button @ref=buttonSend id="submitter" type="submit">G:et S:ome D:ata </button>
 </EditForm>
