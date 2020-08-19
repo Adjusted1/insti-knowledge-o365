@@ -7,34 +7,46 @@
 
 <p>This WebApp consumes O365 email data and tries to organize it better than you can :p</p>
 
-@if(!submissionSuccess)
+@if (!submissionSuccess)
 {
-    <p>Enter C:reds</p>
+    <p>You are not logged in</p>
 }
 else
 {
     <table class="table">
         <thead>
-                <tr>
-                    <th>Subject</th>
-                    <th>Body</th>
-                    <th>Centroid</th>
-                </tr>
+            <tr>
+                <br />
+                <br />
+                <th>Subject</th>
+                <th>Body</th>
+                <th>Centroid</th>
+            </tr>
         </thead>
         <tbody>
-            @foreach (string s in o365Data.Subject)
-            {
-                <tr>
+
+            <tr>
+                @foreach (var s in o365Data.Subject)
+                {
                     <td>@s</td>
-                    @*<td>@o365Data.Body</td>
-                    <td>@o365Data.Centroid</td>*@
-                </tr>
-            }
-            </tbody>
+                }
+                @foreach (var st in o365Data.Body)
+                {@* not displaying anything at all *@
+                    <td>@st</td>
+                }
+                @*@foreach (var str in o365Data.Centroid)
+                {
+                    <td>@str</td>
+                }*@
+            </tr>
+
+        </tbody>
     </table>
 }
 
-<EditForm Model="@O365txt" OnValidSubmit="SendCredsGetData">
+@* you have to CLICK TWICE to get data!!!*@
+
+<EditForm Model="@O365txt" OnValidSubmit="(async () => await SendCredsGetData())">
     <DataAnnotationsValidator />
     <ValidationSummary />
     e:mail
@@ -52,22 +64,18 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        // spinner test
-        // failed System.Threading.Thread.Sleep(5000);
-        // it gets here and outputs to debug OK
-        System.Diagnostics.Debug.WriteLine("async service broker invoked from client action");
         o365Data = new O365Data();
     }
-
 
     private ElementReference buttonSend;
     private bool submissionSuccess = false;
 
-    public void SendCredsGetData()
+    public async Task SendCredsGetData()
     {
         o365Data.GetData();
-        if(o365Data != null) { submissionSuccess = true; }
+        if (o365Data != null) { submissionSuccess = true; }
     }
+
 }
 
 
