@@ -8,19 +8,15 @@ using System.Threading.Tasks;
 
 namespace blazor_base
 {
-    public class O365Data
+    public class O365Data : MLengine
     {
         public List<string> Subject = new List<string>();
         public List<string> Body = new List<string>();
         public List<string> Centroid = new List<string>();
-
         public bool LoggedIn { get; set; } = false;
-
-        //[Required]
-        //[StringLength(1, ErrorMessage = "Password was not entered or failed in transmission to server code")] 
         public string Username { get; set; }
         public string Password { get; set; }
-       
+        private bool IsReadyToML { get; set; } = false;
         public void GetData() 
         {
             ExchangeService _service;
@@ -48,7 +44,6 @@ namespace blazor_base
                 {
                     try
                     {
-                        //Subject.Add(email.Sender.ToString());
                         if (o is EmailMessage)
                         {
                             o.Load(new PropertySet(BasePropertySet.FirstClassProperties));
@@ -65,6 +60,18 @@ namespace blazor_base
         }
         public O365Data()
         {
+            async System.Threading.Tasks.Task AsyncAwaitExample()
+            {
+                await AsyncWaitForDataLoadComplete();
+                IsReadyToML = true;
+                //Ingestor runML = new Ingestor();
+            }
+
+            async System.Threading.Tasks.Task AsyncWaitForDataLoadComplete()
+            {
+                while(Body.Count == 0) { }
+            }
+
         }
     }
 }

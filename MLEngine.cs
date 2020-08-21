@@ -11,7 +11,7 @@ using Accord.MachineLearning;
 using EnglishStemmer;
 using Accord.Math.Distances;
 
-namespace Institutional_Knowledge_Learner_VSTO
+namespace blazor_base
 {
     /// <summary>Indicates whether the specified array is null or has a length of zero.</summary>
     /// <param name="array">The array to test.</param>
@@ -23,7 +23,7 @@ namespace Institutional_Knowledge_Learner_VSTO
             return (array == null || array.Length == 0);
         }
     }
-    class MLengine
+    public class MLengine
     {
         //public int[] labels { get; set; }
         public MLengine() { }

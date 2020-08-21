@@ -14,9 +14,9 @@ using static Institutional_Knowledge_Learner_VSTO.tfidf;
 using System.Drawing;
 using System.Threading.Tasks;
 
-namespace Institutional_Knowledge_Learner_VSTO
+namespace blazor_base
 {
-    public class Ingestor
+    public class Ingestor : MLengine
     {
         static int numberOfDocs { get; set; } = 65536; // max number messages allowed for now
         static int k { get; set; } = 8;
@@ -29,7 +29,7 @@ namespace Institutional_Knowledge_Learner_VSTO
 
         static List<string> subFolderAllWords = new List<string>();
         static List<string> subFolderTopWords = new List<string>();
-        Ingestor() { }
+        public Ingestor() { }
 
         private static String Remove(String s)
         {
