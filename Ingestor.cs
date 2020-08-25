@@ -61,39 +61,39 @@ namespace blazor_base
                 //inboxFolder = outlookNamespace.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
                 //mailItems = inboxFolder.Items;
                 int i = 0;
-                foreach (dynamic item in this.documents) // dynamic, or com tries to tie non mail items to wrong interface
-                {
-                    if (item is object)
-                    {
-                        LoadDocuments(item, i);
-                        i++;
-                        if (i == numberOfDocs + 1)
-                        {
-                            // run that bitch
-                            MLengine ml = new MLengine();
-                            try
-                            {
-                                // Apply TF*IDF to the documents and get the resulting vectors.
-                                double[][] inputs = tfidf.TFIDF.Transform(documents);
-                                inputs = tfidf.TFIDF.Normalize(inputs);
-                                observations = inputs;
-                                int[] labels = new int[k];
-                                ml.Engine(observations, k, ref labels);
-                                //tfidf.TFIDF.Save();
-                                //ml.AHC(observations, k);
-                                //ClearFolders();
-                                MakeFolders(labels);
-                                StuffFolders(labels);
-                                EnumerateFoldersGetTopWordsPerFolder();
-                            }
-                            catch (System.Exception exc)
-                            {
-                                ///MessageBox.Show(exc.ToString());
-                            }
-                            break;
-                        }
-                    }
-                }
+                //foreach (dynamic item in this.documents) // dynamic, or com tries to tie non mail items to wrong interface
+                //{
+                //    if (item is object)
+                //    {
+                //        LoadDocuments(item, i);
+                //        i++;
+                //        if (i == numberOfDocs + 1)
+                //        {
+                //            // run that bitch
+                //            MLengine ml = new MLengine();
+                //            try
+                //            {
+                //                // Apply TF*IDF to the documents and get the resulting vectors.
+                //                double[][] inputs = tfidf.TFIDF.Transform(documents);
+                //                inputs = tfidf.TFIDF.Normalize(inputs);
+                //                observations = inputs;
+                //                int[] labels = new int[k];
+                //                ml.Engine(observations, k, ref labels);
+                //                //tfidf.TFIDF.Save();
+                //                //ml.AHC(observations, k);
+                //                //ClearFolders();
+                //                MakeFolders(labels);
+                //                StuffFolders(labels);
+                //                EnumerateFoldersGetTopWordsPerFolder();
+                //            }
+                //            catch (System.Exception exc)
+                //            {
+                //                ///MessageBox.Show(exc.ToString());
+                //            }
+                //            break;
+                //        }
+                //    }
+                //}
             }
             catch (System.Exception ex) { /*CALL JS Alert w/err */ }
             finally

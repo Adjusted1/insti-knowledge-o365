@@ -63,10 +63,8 @@ namespace blazor_base
             async System.Threading.Tasks.Task AsyncAwaitExample()
             {
                 await AsyncWaitForDataLoadComplete();
-                IsReadyToML = true;
-                //Ingestor runML = new Ingestor();
+                IsReadyToML = true;                
             }
-
             async System.Threading.Tasks.Task AsyncWaitForDataLoadComplete()
             {
                 while(Body.Count == 0) { }

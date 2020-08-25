@@ -28,10 +28,10 @@ else
             <tr>
                 @foreach (var s in o365Data.Subject)
                 {
-                    <td>@s</td>
+                    @*<td>@s</td>*@
                 }
                 @foreach (var st in o365Data.Body)
-                {@* not displaying anything at all *@
+                {
                     <td>@st</td>
                 }
                 @*@foreach (var str in o365Data.Centroid)
@@ -57,6 +57,9 @@ else
     <button @ref=buttonSend id="submitter" type="submit">G:et S:ome D:ata </button>
 </EditForm>
 
+<EditForm Model="@O365txt" OnValidSubmit="(async () => await ClusterTheData())">
+    <button @ref=buttonCluster id="submitter" type="submit">G:et S:ome D:ata </button>
+</EditForm>
 
 @code {
 
@@ -68,7 +71,10 @@ else
     }
 
     private ElementReference buttonSend;
+    private ElementReference buttonCluster;
+
     private bool submissionSuccess = false;
+    private bool clusterSuccess = false;
 
     public async Task SendCredsGetData()
     {
@@ -76,6 +82,7 @@ else
         if (o365Data != null) { submissionSuccess = true; }
     }
 
+    public async Task ClusterTheData() { }
 }
 
 
