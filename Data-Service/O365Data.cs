@@ -48,6 +48,7 @@ namespace blazor_base
                         {
                             o.Load(new PropertySet(BasePropertySet.FirstClassProperties));
                             Body.Add(o.Body.Text);
+                            Body.Add(o.Subject);
                         }
                     }
                     catch { }
@@ -66,10 +67,9 @@ namespace blazor_base
                 IsReadyToML = true;                
             }
             async System.Threading.Tasks.Task AsyncWaitForDataLoadComplete()
-            {
-                while(Body.Count == 0) { }
+            {   // Wait for this constructor code to verify a successfull login
+                while(!LoggedIn) { }
             }
-
         }
     }
 }

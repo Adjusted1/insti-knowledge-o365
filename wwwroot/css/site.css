@@ -59,9 +59,9 @@ app {
     }
 
     .sidebar .oi {
-        width: 2rem;
+        width: 4rem;
         font-size: 1.1rem;
-        vertical-align: text-top;
+        vertical-align: text-bottom;
         top: -2px;
     }
 
@@ -83,8 +83,8 @@ app {
             border-radius: 4px;
             height: 3rem;
             display: flex;
-            align-items: center;
-            line-height: 3rem;
+            align-items: flex-start;
+            line-height: 1rem;
         }
 
             .sidebar .nav-item a.active {

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Faso.Blazor.SpinKit" Version="1.0.1" />
     <PackageReference Include="Microsoft.Exchange.WebServices" Version="2.2.0" />
     <PackageReference Include="System.Diagnostics.Debug" Version="4.3.0" />
   </ItemGroup>
@@ -88,6 +89,10 @@
     <Reference Include="System.CodeDom">
       <HintPath>DLLs\System.CodeDom.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Spinner-Service\" />
   </ItemGroup>
 
 </Project>

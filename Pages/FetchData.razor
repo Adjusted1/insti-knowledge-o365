@@ -5,7 +5,7 @@
 
 <h1>O:365 C:luster P:harm</h1>
 
-<p>This WebApp consumes O365 email data and tries to organize it better than you can :p</p>
+<p>This WebApp consumes O365 email and Clusters the content into unlabeled groups</p>
 
 @if (!submissionSuccess)
 {
@@ -16,8 +16,7 @@ else
     <table class="table">
         <thead>
             <tr>
-                <br />
-                <br />
+                <th>Logged in and fetching obj[0] msg data? @o365Data.LoggedIn.ToString()</th>
                 <th>Subject</th>
                 <th>Body</th>
                 <th>Centroid</th>
@@ -26,15 +25,18 @@ else
         <tbody>
 
             <tr>
-                @foreach (var s in o365Data.Subject)
+                <td>@o365Data.Subject[0]</td>
+                <td>@o365Data.Body[0]</td>
+                <td>null @*@o365Data.Centroid[0]*@</td>
+                @*foreach (var s in o365Data.Subject)
                 {
-                    @*<td>@s</td>*@
-                }
-                @foreach (var st in o365Data.Body)
+                    <td>@s</td>
+                }*@
+                @*foreach (var st in o365Data.Body)
                 {
                     <td>@st</td>
-                }
-                @*@foreach (var str in o365Data.Centroid)
+                }*@
+                @*foreach (var str in o365Data.Centroid)
                 {
                     <td>@str</td>
                 }*@
@@ -44,7 +46,7 @@ else
     </table>
 }
 
-@* you have to CLICK TWICE to get data!!!*@
+
 
 <EditForm Model="@O365txt" OnValidSubmit="(async () => await SendCredsGetData())">
     <DataAnnotationsValidator />
@@ -54,12 +56,12 @@ else
     p:assword
     <InputText id="Password" @bind-Value="o365Data.Password" type="password"></InputText>
 
-    <button @ref=buttonSend id="submitter" type="submit">G:et S:ome D:ata </button>
+    <button @ref=buttonSend id="submitter" type="submit">Organize my Email. Note: UI spinner eliminated due to budget cuts</button>
 </EditForm>
 
-<EditForm Model="@O365txt" OnValidSubmit="(async () => await ClusterTheData())">
-    <button @ref=buttonCluster id="submitter" type="submit">G:et S:ome D:ata </button>
-</EditForm>
+@*<EditForm Model="@O365txt" OnValidSubmit="(async () => await ClusterTheData())">
+    <button @ref=buttonCluster id="submitter" type="submit">C:::luster</button>
+</EditForm>*@
 
 @code {
 
@@ -79,7 +81,7 @@ else
     public async Task SendCredsGetData()
     {
         o365Data.GetData();
-        if (o365Data != null) { submissionSuccess = true; }
+        if (o365Data.LoggedIn) { submissionSuccess = true; }
     }
 
     public async Task ClusterTheData() { }

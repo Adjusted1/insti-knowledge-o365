@@ -1,21 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Owner\\blazor_base\\blazor_base.csproj": {}
+    "C:\\sources\\insti-knowledge-o365\\blazor_base.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Owner\\blazor_base\\blazor_base.csproj": {
+    "C:\\sources\\insti-knowledge-o365\\blazor_base.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Owner\\blazor_base\\blazor_base.csproj",
+        "projectUniqueName": "C:\\sources\\insti-knowledge-o365\\blazor_base.csproj",
         "projectName": "blazor_base",
-        "projectPath": "C:\\Users\\Owner\\blazor_base\\blazor_base.csproj",
-        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Owner\\blazor_base\\obj\\",
+        "projectPath": "C:\\sources\\insti-knowledge-o365\\blazor_base.csproj",
+        "packagesPath": "C:\\Users\\AACH0000\\.nuget\\packages\\",
+        "outputPath": "C:\\sources\\insti-knowledge-o365\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\AACH0000\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -26,6 +31,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,7 +43,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Faso.Blazor.SpinKit": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
             "Microsoft.Exchange.WebServices": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -65,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

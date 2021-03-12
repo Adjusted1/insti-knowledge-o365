@@ -1,14 +1,27 @@
 {
   "version": 2,
-  "dgSpecHash": "JWO7dzxDCVrTJKFbhRCCM3boISWurVNqKG7zL2kMJIY1RAvlq85Az+8519hXUMJI7hyX8GrCG5ZQnARCc5fmMA==",
+  "dgSpecHash": "GW66yWTyGWKAJAhxiC0i/XlmSsMN0Hs/vzO7Surs0ks61mFsO623g2PU99yP2mNt6OQTesd5SUKdkFRpOUUG+Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Owner\\blazor_base\\blazor_base.csproj",
+  "projectFilePath": "C:\\sources\\insti-knowledge-o365\\blazor_base.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Owner\\.nuget\\packages\\microsoft.exchange.webservices\\2.2.0\\microsoft.exchange.webservices.2.2.0.nupkg.sha512",
-    "C:\\Users\\Owner\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\Owner\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
-    "C:\\Users\\Owner\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
-    "C:\\Users\\Owner\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512"
+    "C:\\Users\\AACH0000\\.nuget\\packages\\faso.blazor.spinkit\\1.0.1\\faso.blazor.spinkit.1.0.1.nupkg.sha512",
+    "C:\\Users\\AACH0000\\.nuget\\packages\\microsoft.aspnetcore.authorization\\3.0.0\\microsoft.aspnetcore.authorization.3.0.0.nupkg.sha512",
+    "C:\\Users\\AACH0000\\.nuget\\packages\\microsoft.aspnetcore.components\\3.0.0\\microsoft.aspnetcore.components.3.0.0.nupkg.sha512",
+    "C:\\Users\\AACH0000\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\3.0.0\\microsoft.aspnetcore.components.analyzers.3.0.0.nupkg.sha512",
+    "C:\\Users\\AACH0000\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\3.0.0\\microsoft.aspnetcore.components.forms.3.0.0.nupkg.sha512",
+    "C:\\Users\\AACH0000\\.nuget\\packages\\microsoft.aspnetcore.components.web\\3.0.0\\microsoft.aspnetcore.components.web.3.0.0.nupkg.sha512",
+    "C:\\Users\\AACH0000\\.nuget\\packages\\microsoft.aspnetcore.metadata\\3.0.0\\microsoft.aspnetcore.metadata.3.0.0.nupkg.sha512",
+    "C:\\Users\\AACH0000\\.nuget\\packages\\microsoft.exchange.webservices\\2.2.0\\microsoft.exchange.webservices.2.2.0.nupkg.sha512",
+    "C:\\Users\\AACH0000\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.0.0\\microsoft.extensions.dependencyinjection.3.0.0.nupkg.sha512",
+    "C:\\Users\\AACH0000\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.0.0\\microsoft.extensions.dependencyinjection.abstractions.3.0.0.nupkg.sha512",
+    "C:\\Users\\AACH0000\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.0.0\\microsoft.extensions.logging.abstractions.3.0.0.nupkg.sha512",
+    "C:\\Users\\AACH0000\\.nuget\\packages\\microsoft.extensions.options\\3.0.0\\microsoft.extensions.options.3.0.0.nupkg.sha512",
+    "C:\\Users\\AACH0000\\.nuget\\packages\\microsoft.extensions.primitives\\3.0.0\\microsoft.extensions.primitives.3.0.0.nupkg.sha512",
+    "C:\\Users\\AACH0000\\.nuget\\packages\\microsoft.jsinterop\\3.0.0\\microsoft.jsinterop.3.0.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512"
   ],
   "logs": [
     {

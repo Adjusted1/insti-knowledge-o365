@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace blazor_base.Shared
+namespace blazor_base.Spinner_Service
 {
     #line hidden
     using System;
@@ -75,7 +75,14 @@ using blazor_base.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 1 "C:\sources\insti-knowledge-o365\Spinner-Service\Spinner.razor"
+using Faso.Blazor.SpinKit;
+
+#line default
+#line hidden
+#nullable disable
+    public partial class Spinner : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -83,20 +90,31 @@ using blazor_base.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "C:\sources\insti-knowledge-o365\Shared\NavMenu.razor"
-       
-    private bool collapseNavMenu = true;
-
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+#line 21 "C:\sources\insti-knowledge-o365\Spinner-Service\Spinner.razor"
+ 
+    protected bool IsVisible { get; set; }
+    protected override void OnInitialized()
     {
-        collapseNavMenu = !collapseNavMenu;
+        SpinnerService.OnShow += ShowSpinner;
+        SpinnerService.OnHide += HideSpinner;
+    }
+
+    public void ShowSpinner()
+    {
+        IsVisible = true;
+        StateHasChanged();
+    }
+
+    public void HideSpinner()
+    {
+        IsVisible = false;
+        StateHasChanged();
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private SpinnerService SpinnerService { get; set; }
     }
 }
 #pragma warning restore 1591
