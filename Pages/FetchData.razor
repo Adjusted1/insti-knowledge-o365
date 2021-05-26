@@ -7,6 +7,36 @@
 
 <p>This WebApp consumes O365 email and Clusters the content into unlabeled groups</p>
 
+@if (IsLoading)
+{
+    if (LoadingTemplate != null)
+    {
+        @LoadingTemplate
+    }
+    else
+    {
+        <div class="spinner-border"></div>
+        <span style="display: inline-block; vertical-align: super">@LoadingText</span>
+    }
+}
+else
+{
+    @ChildContent
+}
+@code{
+    [Parameter]
+    public bool IsLoading { get; set; }
+
+    [Parameter]
+    public string LoadingText { get; set; } = "Loading...";
+
+    [Parameter]
+    public RenderFragment LoadingTemplate { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}
+
 @if (!submissionSuccess)
 {
     <p>You are not logged in</p>
@@ -16,18 +46,21 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Logged in and fetching obj[0] msg data? @o365Data.LoggedIn.ToString()</th>
-                <th>Subject</th>
-                <th>Body</th>
-                <th>Centroid 0: @o365Data.Centroids[0]</th>
+                <th>Logged in? @o365Data.LoggedIn.ToString()</th>
+                @*<th>Subject</th>*@
+                @*<th>Body</th>*@
+                @*<th>Centroid 0:</th>
+                <th>Centroid 1: @o365Data.Centroids.Count</th>*@
             </tr>
         </thead>
         <tbody>
 
             <tr>
+                <td> k =  @o365Data.Centroids.Count</td>
+
                 @*@<td>@o365Data.Subject[0]</td>*@
                 @*<td>@o365Data.Body[0]</td>*@
-                <td>null @*@o365Data.Centroid[0]*@</td>
+                <td>@*@o365Data.Centroid[0]*@</td>
                 @*foreach (var s in o365Data.Subject)
                     {
                         <td>@s</td>
@@ -55,8 +88,10 @@ else
     <InputText id="Username" @bind-Value="o365Data.Username"></InputText>
     p:assword
     <InputText id="Password" @bind-Value="o365Data.Password" type="password"></InputText>
-    N:umber of Msgs to Classify
-    <InputText id="kStr" @bind-Value="o365Data.kStr">64</InputText>
+    N:umber of Clusters
+    <InputText id="kStr" @bind-Value="o365Data.kStr">2</InputText>
+    N:umber of Msgs to Cluster
+    <InputText id="documents" @bind-Value="o365Data.documents">2</InputText>
 
     <button @ref=buttonSend id="submitter" type="submit">Organize / Cluster my Email</button>
 </EditForm>

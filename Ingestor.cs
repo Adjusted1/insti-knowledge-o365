@@ -19,8 +19,8 @@ namespace blazor_base
 {
     public class Ingestor : MLengine
     {
-        static int numberOfDocs { get; set; } = 256; // max number messages allowed for now
-        public int k { get; set; }
+        private static int numberOfDocs { get; set; } = 32; // max number messages allowed for now
+        private int k { get; set; }
 
         string numstr = null;
         string kstr = null;
@@ -30,7 +30,11 @@ namespace blazor_base
 
         static List<string> subFolderAllWords = new List<string>();
         static List<string> subFolderTopWords = new List<string>();
-        public Ingestor() { }
+        public Ingestor() 
+        {
+            this.k = O365Data.k;
+            numberOfDocs = O365Data._documents;        
+        }
 
         private static String Remove(String s)
         {

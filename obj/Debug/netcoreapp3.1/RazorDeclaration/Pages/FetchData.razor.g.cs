@@ -84,7 +84,25 @@ using blazor_base;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 68 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
+#line 26 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
+      
+    [Parameter]
+    public bool IsLoading { get; set; }
+
+    [Parameter]
+    public string LoadingText { get; set; } = "Loading...";
+
+    [Parameter]
+    public RenderFragment LoadingTemplate { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 101 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
        
 
     private O365Data o365Data = null;

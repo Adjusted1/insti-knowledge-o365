@@ -12,8 +12,10 @@ namespace blazor_base
 {
     public class O365Data : MLengine
     {
-        public string kStr { get; set; } = "64";
-        public int k = 64;
+        public string kStr { get; set; } = "";
+        public string documents { get; set; } = "0";
+        public static int k { get; set; }
+        public static int _documents { get; set; }
         public List<string> Subject = new List<string>();
         public static List<string> Body = new List<string>();
         public List<string> Centroids = new List<string>();
@@ -43,7 +45,7 @@ namespace blazor_base
             _service.Url = new Uri("https://outlook.office365.com/EWS/Exchange.asmx");
             try
             {
-                k = Int32.Parse(kStr);
+                
                 view  = new ItemView(k);
                 var items = _service.FindItems(WellKnownFolderName.Inbox, view);
                 foreach (Item _item in items)
@@ -90,7 +92,8 @@ namespace blazor_base
         }
         public O365Data()
         {
-            ingestor.k = this.k = Int32.Parse(kStr);
+            this.k = Int32.Parse(kStr);
+            this._documents = Int32.Parse(documents);
             async System.Threading.Tasks.Task AsyncAwaitForDataLoad()
             {
                 await AsyncWaitForDataLoadComplete();
