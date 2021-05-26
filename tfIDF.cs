@@ -184,7 +184,7 @@ namespace Institutional_Knowledge_Learner_VSTO
             /// Loads the TFIDF vocabulary from disk.
             /// </summary>
             /// <param name="filePath">File path</param>
-            public static void Load(string filePath = @"C:\Users\lasweet\source\repos\Institutional_Knowledge_Learner_VSTO\Institutional_Knowledge_Learner_VSTO\kmeansdata\vocabulary.dat")
+            public static void Load(string filePath = @"C:\sources\insti-knowledge-o365\vocabulary.dat")
             {
                 // Load from disk.
                 using (FileStream fs = new FileStream(filePath, FileMode.Open))

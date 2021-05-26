@@ -11,12 +11,13 @@ namespace blazor_base
     public class O365Data : MLengine
     {
         public List<string> Subject = new List<string>();
-        public List<string> Body = new List<string>();
-        public List<string> Centroid = new List<string>();
+        public static List<string> Body = new List<string>();
+        public static List<string> Centroids = new List<string>();
         public bool LoggedIn { get; set; } = false;
         public string Username { get; set; }
         public string Password { get; set; }
         private bool IsReadyToML { get; set; } = false;
+        private Ingestor ingestor = null;
         public void GetData() 
         {
             ExchangeService _service;
@@ -38,7 +39,7 @@ namespace blazor_base
             _service.Url = new Uri("https://outlook.office365.com/EWS/Exchange.asmx");
             try
             {
-                view  = new ItemView(10);
+                view  = new ItemView(1024);
                 var items = _service.FindItems(WellKnownFolderName.Inbox, view);
                 foreach (Item _item in items)
                 {
@@ -49,7 +50,7 @@ namespace blazor_base
                             _item.Load();
                             //_item.Load(new PropertySet(BasePropertySet.FirstClassProperties));
                             Body.Add(_item.Body.Text);
-                            Body.Add(_item.Subject);
+                            //Body.Add(_item.Subject);
                         }
                     }
                     catch { }
@@ -59,10 +60,24 @@ namespace blazor_base
             {
                 System.Diagnostics.Debug.WriteLine(e.ToString());
             }
+            DoML();
+        }
+        private void DoML()
+        {
+            if (IsReadyToML)
+            {
+                if (ingestor != null)
+                {
+                    ingestor = new Ingestor();
+                    ingestor.process();
+                    ingestor.StuffFolders();
+                    Centroids = ingestor.documents.ToList();
+                }
+            }
         }
         public O365Data()
         {
-            async System.Threading.Tasks.Task AsyncAwaitExample()
+            async System.Threading.Tasks.Task AsyncAwaitForDataLoad()
             {
                 await AsyncWaitForDataLoadComplete();
                 IsReadyToML = true;                

@@ -13,19 +13,20 @@ using System.Text.RegularExpressions;
 using static Institutional_Knowledge_Learner_VSTO.tfidf;
 using System.Drawing;
 using System.Threading.Tasks;
+using Institutional_Knowledge_Learner_VSTO;
 
 namespace blazor_base
 {
     public class Ingestor : MLengine
     {
-        static int numberOfDocs { get; set; } = 65536; // max number messages allowed for now
+        static int numberOfDocs { get; set; } = 1024; // max number messages allowed for now
         static int k { get; set; } = 8;
 
         string numstr = null;
         string kstr = null;
 
         double[][] observations = new double[numberOfDocs][];
-        string[] documents = new string[numberOfDocs];
+        public string[] documents = new string[numberOfDocs];
 
         static List<string> subFolderAllWords = new List<string>();
         static List<string> subFolderTopWords = new List<string>();
@@ -41,7 +42,7 @@ namespace blazor_base
             var combined = "";
             try
             {
-                foreach (string s in this.documents) /*item.Body.Split(' ')*/
+                foreach (string s in O365Data.Body) /*item.Body.Split(' ')*/
                 {
                     combined += s + " "; 
                 }
@@ -52,7 +53,7 @@ namespace blazor_base
             catch { }
         }
         // *** NOTE: outlook app object not available if debug breakpoint is not set in startup method!
-        private void process()
+        public void process()
         {
             try
             {
@@ -61,39 +62,39 @@ namespace blazor_base
                 //inboxFolder = outlookNamespace.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
                 //mailItems = inboxFolder.Items;
                 int i = 0;
-                //foreach (dynamic item in this.documents) // dynamic, or com tries to tie non mail items to wrong interface
-                //{
-                //    if (item is object)
-                //    {
-                //        LoadDocuments(item, i);
-                //        i++;
-                //        if (i == numberOfDocs + 1)
-                //        {
-                //            // run that bitch
-                //            MLengine ml = new MLengine();
-                //            try
-                //            {
-                //                // Apply TF*IDF to the documents and get the resulting vectors.
-                //                double[][] inputs = tfidf.TFIDF.Transform(documents);
-                //                inputs = tfidf.TFIDF.Normalize(inputs);
-                //                observations = inputs;
-                //                int[] labels = new int[k];
-                //                ml.Engine(observations, k, ref labels);
-                //                //tfidf.TFIDF.Save();
-                //                //ml.AHC(observations, k);
-                //                //ClearFolders();
-                //                MakeFolders(labels);
-                //                StuffFolders(labels);
-                //                EnumerateFoldersGetTopWordsPerFolder();
-                //            }
-                //            catch (System.Exception exc)
-                //            {
-                //                ///MessageBox.Show(exc.ToString());
-                //            }
-                //            break;
-                //        }
-                //    }
-                //}
+                foreach (dynamic item in O365Data.Body) // dynamic, or com tries to tie non mail items to wrong interface
+                {
+                    if (item is object)
+                    {
+                        LoadDocuments(item, i);
+                        i++;
+                        if (i == numberOfDocs + 1)
+                        {
+                            // run that bitch
+                            MLengine ml = new MLengine();
+                            try
+                            {
+                                // Apply TF*IDF to the documents and get the resulting vectors.
+                                double[][] inputs = Institutional_Knowledge_Learner_VSTO.tfidf.TFIDF.Transform(documents);
+                                inputs = tfidf.TFIDF.Normalize(inputs);
+                                observations = inputs;
+                                int[] labels = new int[k];
+                                ml.Engine(observations, k, ref labels);
+                                //tfidf.TFIDF.Save();
+                                //ml.AHC(observations, k);
+                                //ClearFolders();
+                                //MakeFolders(labels);
+                                //StuffFolders(labels);
+                                //EnumerateFoldersGetTopWordsPerFolder();
+                            }
+                            catch (System.Exception exc)
+                            {
+                                ///MessageBox.Show(exc.ToString());
+                            }
+                            break;
+                        }
+                    }
+                }
             }
             catch (System.Exception ex) { /*CALL JS Alert w/err */ }
             finally
@@ -124,7 +125,7 @@ namespace blazor_base
                 //    ".", "Find Folder Name");
             }
         }
-        private void StuffFolders(int[] labels)
+        public void StuffFolders()
         {
             //ClearFolders(new List<string>{ "clustered-0","clustered-1","clustered-2","clustered-3","clustered-4","clustered-5","clustered-6","clustered-7"});
 
@@ -140,10 +141,12 @@ namespace blazor_base
                 {
                     if (item is object)
                     {
-                        int j = labels[i];
+
+                        //int j = labels[i];
                         //MAPIFolder destFolder = inboxFolder.Folders["clustered-" + j.ToString()];
                         //Outlook.MailItem copyItem = item.Copy();
                         //copyItem.Move(destFolder);
+
                         #region
                         //case 0:
                         //    MAPIFolder destFolder1 = inboxFolder.Folders["clustered-0"];
@@ -191,7 +194,7 @@ namespace blazor_base
                         i++;
                     }
 
-                    if (i == labels.Length) { break; }
+                    if (i == 8) { break; }
                 }
                 //GetTopWords(labels);
             }
