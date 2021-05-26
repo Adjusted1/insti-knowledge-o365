@@ -12,7 +12,7 @@ namespace blazor_base
     {
         public List<string> Subject = new List<string>();
         public static List<string> Body = new List<string>();
-        public static List<string> Centroids = new List<string>();
+        public List<string> Centroids = new List<string>();
         public bool LoggedIn { get; set; } = false;
         public string Username { get; set; }
         public string Password { get; set; }
@@ -39,7 +39,7 @@ namespace blazor_base
             _service.Url = new Uri("https://outlook.office365.com/EWS/Exchange.asmx");
             try
             {
-                view  = new ItemView(1024);
+                view  = new ItemView(2);
                 var items = _service.FindItems(WellKnownFolderName.Inbox, view);
                 foreach (Item _item in items)
                 {
@@ -60,15 +60,22 @@ namespace blazor_base
             {
                 System.Diagnostics.Debug.WriteLine(e.ToString());
             }
+            IsReadyToML = true;
             DoML();
         }
         private void DoML()
         {
             if (IsReadyToML)
             {
-                if (ingestor != null)
+                if (ingestor == null)
                 {
                     ingestor = new Ingestor();
+                    ingestor.process();
+                    ingestor.StuffFolders();
+                    Centroids = ingestor.documents.ToList();
+                }
+                else
+                {
                     ingestor.process();
                     ingestor.StuffFolders();
                     Centroids = ingestor.documents.ToList();
