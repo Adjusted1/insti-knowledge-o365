@@ -19,8 +19,8 @@ namespace blazor_base
 {
     public class Ingestor : MLengine
     {
-        static int numberOfDocs { get; set; } = 2; // max number messages allowed for now
-        static int k { get; set; } = 8;
+        static int numberOfDocs { get; set; } = 256; // max number messages allowed for now
+        public int k { get; set; }
 
         string numstr = null;
         string kstr = null;

@@ -1,8 +1,10 @@
 ﻿using Institutional_Knowledge_Learner_VSTO;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Exchange.WebServices.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +12,8 @@ namespace blazor_base
 {
     public class O365Data : MLengine
     {
+        public string kStr { get; set; } = "64";
+        public int k = 64;
         public List<string> Subject = new List<string>();
         public static List<string> Body = new List<string>();
         public List<string> Centroids = new List<string>();
@@ -39,7 +43,8 @@ namespace blazor_base
             _service.Url = new Uri("https://outlook.office365.com/EWS/Exchange.asmx");
             try
             {
-                view  = new ItemView(2);
+                k = Int32.Parse(kStr);
+                view  = new ItemView(k);
                 var items = _service.FindItems(WellKnownFolderName.Inbox, view);
                 foreach (Item _item in items)
                 {
@@ -80,10 +85,12 @@ namespace blazor_base
                     ingestor.StuffFolders();
                     Centroids = ingestor.documents.ToList();
                 }
+                WriteCSV();
             }
         }
         public O365Data()
         {
+            ingestor.k = this.k = Int32.Parse(kStr);
             async System.Threading.Tasks.Task AsyncAwaitForDataLoad()
             {
                 await AsyncWaitForDataLoadComplete();
@@ -94,5 +101,14 @@ namespace blazor_base
                 while(!LoggedIn) { }
             }
         }
+
+        public void WriteCSV()
+        {
+            foreach (string s in Centroids)
+            {
+                File.WriteAllText("centroids.txt", s + System.Environment.NewLine);
+            }
+        }
+      
     }
 }

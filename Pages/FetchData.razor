@@ -29,17 +29,17 @@ else
                 @*<td>@o365Data.Body[0]</td>*@
                 <td>null @*@o365Data.Centroid[0]*@</td>
                 @*foreach (var s in o365Data.Subject)
-                {
-                    <td>@s</td>
-                }*@
+                    {
+                        <td>@s</td>
+                    }*@
                 @*foreach (var st in o365Data.Body)
-                {
-                    <td>@st</td>
-                }*@
+                    {
+                        <td>@st</td>
+                    }*@
                 @*foreach (var str in o365Data.Centroid)
-                {
-                    <td>@str</td>
-                }*@
+                    {
+                        <td>@str</td>
+                    }*@
             </tr>
 
         </tbody>
@@ -55,13 +55,15 @@ else
     <InputText id="Username" @bind-Value="o365Data.Username"></InputText>
     p:assword
     <InputText id="Password" @bind-Value="o365Data.Password" type="password"></InputText>
+    N:umber of Msgs to Classify
+    <InputText id="kStr" @bind-Value="o365Data.kStr">64</InputText>
 
     <button @ref=buttonSend id="submitter" type="submit">Organize / Cluster my Email</button>
 </EditForm>
 
 @*<EditForm Model="@O365txt" OnValidSubmit="(async () => await ClusterTheData())">
-    <button @ref=buttonCluster id="submitter" type="submit">C:::luster</button>
-</EditForm>*@
+        <button @ref=buttonCluster id="submitter" type="submit">C:::luster</button>
+    </EditForm>*@
 
 @code {
 

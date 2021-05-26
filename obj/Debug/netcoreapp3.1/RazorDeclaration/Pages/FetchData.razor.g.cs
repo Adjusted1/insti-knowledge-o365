@@ -84,7 +84,7 @@ using blazor_base;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 66 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
+#line 68 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
        
 
     private O365Data o365Data = null;
