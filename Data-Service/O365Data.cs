@@ -12,8 +12,8 @@ namespace blazor_base
 {
     public class O365Data : MLengine
     {
-        public string kStr { get; set; } = "";
-        public string documents { get; set; } = "0";
+        public string kStr { get; set; }
+        public string documents { get; set; }
         public static int k { get; set; }
         public static int _documents { get; set; }
         public List<string> Subject = new List<string>();
@@ -26,6 +26,7 @@ namespace blazor_base
         private Ingestor ingestor = null;
         public void GetData() 
         {
+            k = Int32.Parse(kStr);
             ExchangeService _service;
             ItemView view;
             try
@@ -72,8 +73,11 @@ namespace blazor_base
         }
         private void DoML()
         {
+            
             if (IsReadyToML)
             {
+                k = Int32.Parse(kStr);
+                _documents = Int32.Parse(documents);
                 if (ingestor == null)
                 {
                     ingestor = new Ingestor();
@@ -92,8 +96,7 @@ namespace blazor_base
         }
         public O365Data()
         {
-            this.k = Int32.Parse(kStr);
-            this._documents = Int32.Parse(documents);
+            
             async System.Threading.Tasks.Task AsyncAwaitForDataLoad()
             {
                 await AsyncWaitForDataLoadComplete();

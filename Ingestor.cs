@@ -19,21 +19,21 @@ namespace blazor_base
 {
     public class Ingestor : MLengine
     {
-        private static int numberOfDocs { get; set; } = 32; // max number messages allowed for now
-        private int k { get; set; }
+        //private static int numberOfDocs { get; set; } = 32; // max number messages allowed for now
+        //private int k { get; set; }
 
-        string numstr = null;
-        string kstr = null;
+        //string numstr = null;
+        //string kstr = null;
 
-        double[][] observations = new double[numberOfDocs][];
-        public string[] documents = new string[numberOfDocs];
+        double[][] observations = new double[O365Data._documents][];
+        public string[] documents = new string[O365Data._documents];
 
         static List<string> subFolderAllWords = new List<string>();
         static List<string> subFolderTopWords = new List<string>();
         public Ingestor() 
         {
-            this.k = O365Data.k;
-            numberOfDocs = O365Data._documents;        
+            //this.k = O365Data.k;
+            //numberOfDocs = O365Data._documents;        
         }
 
         private static String Remove(String s)
@@ -72,7 +72,7 @@ namespace blazor_base
                     {
                         LoadDocuments(item, i);
                         i++;
-                        if (i == numberOfDocs + 1)
+                        if (i == O365Data._documents + 1)
                         {
                             // run that bitch
                             MLengine ml = new MLengine();
@@ -82,8 +82,8 @@ namespace blazor_base
                                 double[][] inputs = Institutional_Knowledge_Learner_VSTO.tfidf.TFIDF.Transform(documents);
                                 inputs = tfidf.TFIDF.Normalize(inputs);
                                 observations = inputs;
-                                int[] labels = new int[k];
-                                ml.Engine(observations, k, ref labels);
+                                int[] labels = new int[O365Data.k];
+                                ml.Engine(observations, O365Data.k, ref labels);
                                 //tfidf.TFIDF.Save();
                                 //ml.AHC(observations, k);
                                 //ClearFolders();
@@ -310,7 +310,7 @@ namespace blazor_base
             //outlookNamespace = outlookApplication.GetNamespace("MAPI");
             //inboxFolder = outlookNamespace.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
 
-            for (int i = 0; i < k; i++)
+            for (int i = 0; i < O365Data.k; i++)
             {
                 try
                 {
@@ -323,34 +323,33 @@ namespace blazor_base
             //inboxFolder = null;
             //outlookNamespace = null;
         }
-        private void ThisAddIn_Startup(object sender, System.EventArgs e)
-        {
-            string dummy = "noinput";
+        //private void ThisAddIn_Startup(object sender, System.EventArgs e)
+        //{
+        //    string dummy = "noinput";
 
-            //Task.Run(() => NonBlockingDialogs());
+        //    //Task.Run(() => NonBlockingDialogs());
 
-            //InputBox("Click OK when parameters have been entered", "-> Ready to Tidy up your Inbox? <-", ref dummy);
-            //InputBox("Enter the number of Email Categories you want the AI to fill in", "Enter number of Centroids(k): ", ref kstr);
-            //while ((numstr == null) && (kstr == null))
-            //{
-            numberOfDocs = Convert.ToInt16(numstr);
-            k = Convert.ToInt16(kstr);
-            Task.Run(() => process()); // fire and forget ahahahahhaa
+        //    //InputBox("Click OK when parameters have been entered", "-> Ready to Tidy up your Inbox? <-", ref dummy);
+        //    //InputBox("Enter the number of Email Categories you want the AI to fill in", "Enter number of Centroids(k): ", ref kstr);
+        //    //while ((numstr == null) && (kstr == null))
+        //    //{
+        //    numberOfDocs = Convert.ToInt16(numberOfDocs);
+        //    Task.Run(() => process()); // fire and forget ahahahahhaa
 
-        }
-        private void ReleaseComObject(object o)
-        {
-            if (o != null)
-            {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(o);
-                o = null;
-            }
-        }
-        private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
-        {
-            // Note: Outlook no longer raises this event. If you have code that 
-            //    must run when Outlook shuts down, see https://go.microsoft.com/fwlink/?LinkId=506785
-        }
+        //}
+        //private void ReleaseComObject(object o)
+        //{
+        //    if (o != null)
+        //    {
+        //        System.Runtime.InteropServices.Marshal.ReleaseComObject(o);
+        //        o = null;
+        //    }
+        //}
+        //private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
+        //{
+        //    // Note: Outlook no longer raises this event. If you have code that 
+        //    //    must run when Outlook shuts down, see https://go.microsoft.com/fwlink/?LinkId=506785
+        //}
         #region VSTO generated code
 
         /// <summary>
