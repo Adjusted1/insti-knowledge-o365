@@ -25,8 +25,8 @@ else
         <tbody>
 
             <tr>
-                <td>@o365Data.Subject[0]</td>
-                <td>@o365Data.Body[0]</td>
+                @*@<td>@o365Data.Subject[0]</td>*@
+                @*<td>@o365Data.Body[0]</td>*@
                 <td>null @*@o365Data.Centroid[0]*@</td>
                 @*foreach (var s in o365Data.Subject)
                 {
@@ -56,7 +56,7 @@ else
     p:assword
     <InputText id="Password" @bind-Value="o365Data.Password" type="password"></InputText>
 
-    <button @ref=buttonSend id="submitter" type="submit">Organize my Email. Note: UI spinner eliminated due to budget cuts</button>
+    <button @ref=buttonSend id="submitter" type="submit">Organize / Cluster my Email</button>
 </EditForm>
 
 @*<EditForm Model="@O365txt" OnValidSubmit="(async () => await ClusterTheData())">

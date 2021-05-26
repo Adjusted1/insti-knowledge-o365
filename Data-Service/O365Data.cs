@@ -38,17 +38,18 @@ namespace blazor_base
             _service.Url = new Uri("https://outlook.office365.com/EWS/Exchange.asmx");
             try
             {
-                view  = new ItemView(1);
+                view  = new ItemView(10);
                 var items = _service.FindItems(WellKnownFolderName.Inbox, view);
-                foreach (var o in items.Items)
+                foreach (Item _item in items)
                 {
                     try
                     {
-                        if (o is EmailMessage)
+                        if (_item is EmailMessage)
                         {
-                            o.Load(new PropertySet(BasePropertySet.FirstClassProperties));
-                            Body.Add(o.Body.Text);
-                            Body.Add(o.Subject);
+                            _item.Load();
+                            //_item.Load(new PropertySet(BasePropertySet.FirstClassProperties));
+                            Body.Add(_item.Body.Text);
+                            Body.Add(_item.Subject);
                         }
                     }
                     catch { }
