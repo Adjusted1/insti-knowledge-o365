@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using blazor_base.Data_Service;
 
 namespace blazor_base
 {
@@ -16,7 +17,7 @@ namespace blazor_base
         public string documents { get; set; }
         public static int k { get; set; }
         public static int _documents { get; set; }
-        public List<string> Subject = new List<string>();
+        public static List<string> Subject = new List<string>();
         public static List<string> Body = new List<string>();
         public List<string> Centroids = new List<string>();
         public bool LoggedIn { get; set; } = false;
@@ -27,28 +28,11 @@ namespace blazor_base
         public void GetData() 
         {
             k = Int32.Parse(kStr);
-            ExchangeService _service;
-            ItemView view;
+            ExchangeServices.k = k;
+            ExchangeServices.Login(Username, Password);
             try
             {
-                _service = new ExchangeService
-                {
-                    Credentials = new WebCredentials(Username, Password)
-                };
-                LoggedIn = true;
-            }
-            catch (Exception ex)
-            {
-                LoggedIn = false;
-                System.Diagnostics.Debug.WriteLine(ex.ToString());
-                return;
-            }
-            _service.Url = new Uri("https://outlook.office365.com/EWS/Exchange.asmx");
-            try
-            {
-                
-                view  = new ItemView(k);
-                var items = _service.FindItems(WellKnownFolderName.Inbox, view);
+                var items = ExchangeServices.exchange.FindItems(WellKnownFolderName.Inbox, ExchangeServices.itemView);
                 foreach (Item _item in items)
                 {
                     try
@@ -57,7 +41,7 @@ namespace blazor_base
                         {
                             _item.Load();
                             //_item.Load(new PropertySet(BasePropertySet.FirstClassProperties));
-                            Body.Add(_item.Body.Text);
+                            Subject.Add(_item.Body.Text);
                             //Body.Add(_item.Subject);
                         }
                     }
@@ -82,14 +66,12 @@ namespace blazor_base
                 {
                     ingestor = new Ingestor();
                     ingestor.process();
-                    ingestor.StuffFolders();
-                    Centroids = ingestor.documents.ToList();
+                    //Centroids = ingestor.documents.ToList();
                 }
                 else
                 {
                     ingestor.process();
-                    ingestor.StuffFolders();
-                    Centroids = ingestor.documents.ToList();
+                    //Centroids = ingestor.documents.ToList();
                 }
                 WriteCSV();
             }

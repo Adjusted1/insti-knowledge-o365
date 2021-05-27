@@ -87,6 +87,7 @@ C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\blazor_base.dll
 C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\blazor_base.pdb
 C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\blazor_base.Views.dll
 C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\blazor_base.Views.pdb
+C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Faso.Blazor.SpinKit.dll
 C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.Exchange.WebServices.Auth.dll
 C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.Exchange.WebServices.dll
 C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Accord.dll
@@ -115,7 +116,6 @@ C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.Office.Tools.C
 C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll
 C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\System.CodeDom.dll
-C:\sources\insti-knowledge-o365\obj\Debug\netcoreapp3.1\blazor_base.csprojAssemblyReference.cache
 C:\sources\insti-knowledge-o365\obj\Debug\netcoreapp3.1\blazor_base.AssemblyInfoInputs.cache
 C:\sources\insti-knowledge-o365\obj\Debug\netcoreapp3.1\blazor_base.AssemblyInfo.cs
 C:\sources\insti-knowledge-o365\obj\Debug\netcoreapp3.1\blazor_base.csproj.CoreCompileInputs.cache
@@ -155,4 +155,4 @@ C:\sources\insti-knowledge-o365\obj\Debug\netcoreapp3.1\blazor_base.csproj.CopyC
 C:\sources\insti-knowledge-o365\obj\Debug\netcoreapp3.1\blazor_base.dll
 C:\sources\insti-knowledge-o365\obj\Debug\netcoreapp3.1\blazor_base.pdb
 C:\sources\insti-knowledge-o365\obj\Debug\netcoreapp3.1\blazor_base.genruntimeconfig.cache
-C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Faso.Blazor.SpinKit.dll
+C:\sources\insti-knowledge-o365\obj\Debug\netcoreapp3.1\blazor_base.csprojAssemblyReference.cache

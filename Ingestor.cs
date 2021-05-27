@@ -14,6 +14,9 @@ using static Institutional_Knowledge_Learner_VSTO.tfidf;
 using System.Drawing;
 using System.Threading.Tasks;
 using Institutional_Knowledge_Learner_VSTO;
+using Microsoft.Exchange.WebServices;
+using blazor_base.Data_Service;
+using Microsoft.Exchange.WebServices.Data;
 
 namespace blazor_base
 {
@@ -50,6 +53,9 @@ namespace blazor_base
                 {
                     combined += s + " "; 
                 }
+
+                
+
                 //combined += item.SenderEmailAddress + " ";
                 //combined += item.Subject + " ";
                 documents[i] = combined;
@@ -66,13 +72,13 @@ namespace blazor_base
                 //inboxFolder = outlookNamespace.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
                 //mailItems = inboxFolder.Items;
                 int i = 0;
-                foreach (dynamic item in O365Data.Body) // dynamic, or com tries to tie non mail items to wrong interface
+                foreach (dynamic item in O365Data.Subject) // dynamic, or com tries to tie non mail items to wrong interface
                 {
                     if (item is object)
                     {
                         LoadDocuments(item, i);
                         i++;
-                        if (i == O365Data._documents + 1)
+                        if (i == O365Data._documents)
                         {
                             // run that bitch
                             MLengine ml = new MLengine();
@@ -87,8 +93,8 @@ namespace blazor_base
                                 //tfidf.TFIDF.Save();
                                 //ml.AHC(observations, k);
                                 //ClearFolders();
-                                //MakeFolders(labels);
-                                //StuffFolders(labels);
+                                MakeFolders(labels);
+                                StuffFolders(labels);
                                 //EnumerateFoldersGetTopWordsPerFolder();
                             }
                             catch (System.Exception exc)
@@ -129,7 +135,7 @@ namespace blazor_base
                 //    ".", "Find Folder Name");
             }
         }
-        public void StuffFolders()
+        public void StuffFolders(int[] labels)
         {
             //ClearFolders(new List<string>{ "clustered-0","clustered-1","clustered-2","clustered-3","clustered-4","clustered-5","clustered-6","clustered-7"});
 
@@ -146,7 +152,7 @@ namespace blazor_base
                     if (item is object)
                     {
 
-                        //int j = labels[i];
+                        int j = labels[i];
                         //MAPIFolder destFolder = inboxFolder.Folders["clustered-" + j.ToString()];
                         //Outlook.MailItem copyItem = item.Copy();
                         //copyItem.Move(destFolder);
@@ -198,7 +204,7 @@ namespace blazor_base
                         i++;
                     }
 
-                    if (i == 8) { break; }
+                    if (i == O365Data.k) { break; }
                 }
                 //GetTopWords(labels);
             }
@@ -296,27 +302,42 @@ namespace blazor_base
         private void MakeFolders(int[] labels)
         {
             // del old first
-            for (int x = 0; x < 129; x++)
-            {
-                try
-                {
-                    DelFolder("clustered-" + x.ToString());
-                }
-                catch { }
-            }
+            //for (int x = 0; x < 129; x++)
+            //{
+            //    try
+            //    {
+            //        DelFolder("clustered-" + x.ToString());
+            //    }
+            //    catch { }
+            //}
             //MessageBox.Show("finished deleting clusters");
 
             //outlookApplication = Marshal.GetActiveObject("Outlook.Application") as Outlook.Application;
             //outlookNamespace = outlookApplication.GetNamespace("MAPI");
             //inboxFolder = outlookNamespace.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
 
-            for (int i = 0; i < O365Data.k; i++)
+            //for (int i = 0; i < O365Data.k; i++)
+            //{
+            //    try
+            //    {
+
+            //        //inboxFolder.Folders.Add("clustered-" + i.ToString());
+            //    }
+            //    catch { }
+            //}
+            try
             {
-                try
-                {
-                    //inboxFolder.Folders.Add("clustered-" + i.ToString());
-                }
-                catch { }
+
+                // Create a custom folder.
+                Folder folder = new Folder(ExchangeServices.exchange);
+                folder.DisplayName = "test";
+                folder.FolderClass = "IPF.Note";
+                // Save the folder as a child folder of the Inbox.
+                folder.Save(WellKnownFolderName.Inbox);
+            }
+            catch (ServiceResponseException sre)
+            {
+                System.Diagnostics.Debug.WriteLine(sre.ToString());
             }
             //ReleaseComObject(outlookNamespace);
             //ReleaseComObject(inboxFolder);
