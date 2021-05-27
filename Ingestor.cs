@@ -144,16 +144,32 @@ namespace blazor_base
                 {
                     if (item is object)
                     {
-
                         int j = labels[i];
                         string folderName = "unlabeled - " + i.ToString();
-
-                        // Create an email message and identify the Exchange service.
+                        // Ceate an email message and identify the Exchange service.
                         EmailMessage message = new EmailMessage(ExchangeServices.exchange);
+                       
                         // Add properties to the email message.
-                        message.Subject = item;
-                        message.Copy(folderName);
-                        
+                        message.Subject = item.ToString();
+                        ExtendedPropertyDefinition PidTagInternetMessageId = new ExtendedPropertyDefinition(4149, MapiPropertyType.String);
+                        message.SetExtendedProperty(PidTagInternetMessageId, ("<" + Guid.NewGuid().ToString() + "@domain.com>"));
+                        PropertySet psPropSet = new PropertySet(BasePropertySet.FirstClassProperties) { PidTagInternetMessageId };
+                        message.Load(psPropSet);
+
+                        ItemId itemId = message.InternetMessageId;
+
+
+                        // As a best practice, limit the properties returned by the Bind method to only those that are required.
+                        PropertySet propSet = new PropertySet(BasePropertySet.IdOnly, EmailMessageSchema.Subject, EmailMessageSchema.ParentFolderId);
+                        // Bind to the existing item by using the ItemId.
+                        // This method call results in a GetItem call to EWS.
+                        EmailMessage originalMessage = EmailMessage.Bind(ExchangeServices.exchange, itemId, propSet);
+                        // Copy the orignal message into another folder in the mailbox and store the returned item.
+                        Item _item = originalMessage.Copy(folderName);
+                        // Check that the item was copied by binding to the copied email message 
+                        // and retrieving the new ParentFolderId.
+                        // This method call results in a GetItem call to EWS.
+                        //EmailMessage copiedMessage = EmailMessage.Bind(ExchangeServices.exchange, item.Id, propSet);
                         
                         //MAPIFolder destFolder = inboxFolder.Folders["clustered-" + j.ToString()];
                         //Outlook.MailItem copyItem = item.Copy();
