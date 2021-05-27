@@ -137,13 +137,6 @@ namespace blazor_base
         }
         public void StuffFolders(int[] labels)
         {
-            //ClearFolders(new List<string>{ "clustered-0","clustered-1","clustered-2","clustered-3","clustered-4","clustered-5","clustered-6","clustered-7"});
-
-            //outlookApplication = Marshal.GetActiveObject("Outlook.Application") as Outlook.Application;
-            //outlookNamespace = outlookApplication.GetNamespace("MAPI");
-            //inboxFolder = outlookNamespace.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
-            //mailItems = inboxFolder.Items;
-
             try
             {
                 int i = 0;
@@ -153,6 +146,15 @@ namespace blazor_base
                     {
 
                         int j = labels[i];
+                        string folderName = "unlabeled - " + i.ToString();
+
+                        // Create an email message and identify the Exchange service.
+                        EmailMessage message = new EmailMessage(ExchangeServices.exchange);
+                        // Add properties to the email message.
+                        message.Subject = item;
+                        message.Copy(folderName);
+                        
+                        
                         //MAPIFolder destFolder = inboxFolder.Folders["clustered-" + j.ToString()];
                         //Outlook.MailItem copyItem = item.Copy();
                         //copyItem.Move(destFolder);
@@ -206,18 +208,9 @@ namespace blazor_base
 
                     if (i == O365Data.k) { break; }
                 }
-                //GetTopWords(labels);
             }
-            catch (System.Exception ex) { /*MessageBox.Show(ex.ToString());*/ }
-            finally
-            {
-                //ReleaseComObject(mailItems);
-                //ReleaseComObject(inboxFolder);
-                //ReleaseComObject(outlookNamespace);
-                //mailItems = null;
-                //inboxFolder = null;
-                //outlookNamespace = null;
-            }
+            catch (ServiceResponseException sre) { System.Diagnostics.Debug.WriteLine(sre.ToString()); }
+           
         }
         private void GetTopWords(int[] labels)
         {
@@ -301,48 +294,21 @@ namespace blazor_base
         }
         private void MakeFolders(int[] labels)
         {
-            // del old first
-            //for (int x = 0; x < 129; x++)
-            //{
-            //    try
-            //    {
-            //        DelFolder("clustered-" + x.ToString());
-            //    }
-            //    catch { }
-            //}
-            //MessageBox.Show("finished deleting clusters");
 
-            //outlookApplication = Marshal.GetActiveObject("Outlook.Application") as Outlook.Application;
-            //outlookNamespace = outlookApplication.GetNamespace("MAPI");
-            //inboxFolder = outlookNamespace.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
-
-            //for (int i = 0; i < O365Data.k; i++)
-            //{
-            //    try
-            //    {
-
-            //        //inboxFolder.Folders.Add("clustered-" + i.ToString());
-            //    }
-            //    catch { }
-            //}
-            try
+            for (int i = 0; i < O365Data.k; i++)
             {
-
-                // Create a custom folder.
-                Folder folder = new Folder(ExchangeServices.exchange);
-                folder.DisplayName = "test";
-                folder.FolderClass = "IPF.Note";
-                // Save the folder as a child folder of the Inbox.
-                folder.Save(WellKnownFolderName.Inbox);
+                try
+                {
+                    Folder folder = new Folder(ExchangeServices.exchange);
+                    folder.DisplayName = "unlabeled - " + i.ToString();
+                    folder.FolderClass = "IPF.Note";
+                    folder.Save(WellKnownFolderName.Inbox);
+                }
+                catch (ServiceResponseException sre)
+                {
+                    System.Diagnostics.Debug.WriteLine(sre.ToString());
+                }
             }
-            catch (ServiceResponseException sre)
-            {
-                System.Diagnostics.Debug.WriteLine(sre.ToString());
-            }
-            //ReleaseComObject(outlookNamespace);
-            //ReleaseComObject(inboxFolder);
-            //inboxFolder = null;
-            //outlookNamespace = null;
         }
         //private void ThisAddIn_Startup(object sender, System.EventArgs e)
         //{
