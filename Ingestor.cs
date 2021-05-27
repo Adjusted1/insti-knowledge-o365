@@ -148,24 +148,39 @@ namespace blazor_base
                         string folderName = "unlabeled - " + i.ToString();
                         // Ceate an email message and identify the Exchange service.
                         EmailMessage message = new EmailMessage(ExchangeServices.exchange);
-                       
-                        // Add properties to the email message.
+
+                        //// Add properties to the email message.
                         message.Subject = item.ToString();
+
                         ExtendedPropertyDefinition PidTagInternetMessageId = new ExtendedPropertyDefinition(4149, MapiPropertyType.String);
                         message.SetExtendedProperty(PidTagInternetMessageId, ("<" + Guid.NewGuid().ToString() + "@domain.com>"));
                         PropertySet psPropSet = new PropertySet(BasePropertySet.FirstClassProperties) { PidTagInternetMessageId };
-                        message.Load(psPropSet);
 
-                        ItemId itemId = message.InternetMessageId;
+                        message.Save();
+                        message.Load();
+                        //string nullFix = message.Id.ToString();
+                        //nullFix = nullFix.Replace('+', 'A');
+                        //string entry_id_hex = BitConverter.ToString(message.InternetMessageId); //This is the entry ID that you should store
+                        //Guid guid = new Guid();
+                        
 
-
+                        //ItemId it2 = message.Id.UniqueId; //ews legacy id
+                        //AlternateIdBase aib = it2;
+                        AlternateId objAltID = new AlternateId();
+                        objAltID.Format = IdFormat.EwsLegacyId;
+                        objAltID.UniqueId = message.Id.UniqueId;
+                        var id = ExchangeServices.exchange.ConvertId(objAltID, IdFormat.OwaId);
+                        AlternateIdBase objAltIDBase = ExchangeServices.exchange.ConvertId(objAltID, IdFormat.EwsId);
+                        AlternateId objAltIDResp = (AlternateId)objAltIDBase;
+                        ItemId itemId = objAltIDResp.UniqueId;
                         // As a best practice, limit the properties returned by the Bind method to only those that are required.
-                        PropertySet propSet = new PropertySet(BasePropertySet.IdOnly, EmailMessageSchema.Subject, EmailMessageSchema.ParentFolderId);
+                        PropertySet propSet = new PropertySet(BasePropertySet.FirstClassProperties, EmailMessageSchema.Subject, EmailMessageSchema.ParentFolderId);
                         // Bind to the existing item by using the ItemId.
                         // This method call results in a GetItem call to EWS.
-                        EmailMessage originalMessage = EmailMessage.Bind(ExchangeServices.exchange, itemId, propSet);
+                        message = EmailMessage.Bind(ExchangeServices.exchange, itemId, propSet);
+                        
                         // Copy the orignal message into another folder in the mailbox and store the returned item.
-                        Item _item = originalMessage.Copy(folderName);
+                        message.Copy(folderName);
                         // Check that the item was copied by binding to the copied email message 
                         // and retrieving the new ParentFolderId.
                         // This method call results in a GetItem call to EWS.

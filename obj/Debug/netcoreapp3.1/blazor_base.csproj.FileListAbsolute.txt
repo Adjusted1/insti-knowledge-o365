@@ -155,4 +155,3 @@ C:\sources\insti-knowledge-o365\obj\Debug\netcoreapp3.1\blazor_base.csproj.CopyC
 C:\sources\insti-knowledge-o365\obj\Debug\netcoreapp3.1\blazor_base.dll
 C:\sources\insti-knowledge-o365\obj\Debug\netcoreapp3.1\blazor_base.pdb
 C:\sources\insti-knowledge-o365\obj\Debug\netcoreapp3.1\blazor_base.genruntimeconfig.cache
-C:\sources\insti-knowledge-o365\obj\Debug\netcoreapp3.1\blazor_base.csprojAssemblyReference.cache

@@ -1,41 +1,14 @@
 ﻿@page "/fetchdata"
 
 @using blazor_base
+@using Faso.Blazor.SpinKit
 @inject O365Data O365txt
 
 <h1>O:365 C:luster P:harm</h1>
 
 <p>This WebApp consumes O365 email and Clusters the content into unlabeled groups</p>
 
-@if (IsLoading)
-{
-    if (LoadingTemplate != null)
-    {
-        @LoadingTemplate
-    }
-    else
-    {
-        <div class="spinner-border"></div>
-        <span style="display: inline-block; vertical-align: super">@LoadingText</span>
-    }
-}
-else
-{
-    @ChildContent
-}
-@code{
-    [Parameter]
-    public bool IsLoading { get; set; }
 
-    [Parameter]
-    public string LoadingText { get; set; } = "Loading...";
-
-    [Parameter]
-    public RenderFragment LoadingTemplate { get; set; }
-
-    [Parameter]
-    public RenderFragment ChildContent { get; set; }
-}
 
 @if (!submissionSuccess)
 {
@@ -43,6 +16,7 @@ else
 }
 else
 {
+    <SpinKitCubeGrid />
     <table class="table">
         <thead>
             <tr>
@@ -50,7 +24,7 @@ else
                 @*<th>Subject</th>*@
                 @*<th>Body</th>*@
                 @*<th>Centroid 0:</th>
-                <th>Centroid 1: @o365Data.Centroids.Count</th>*@
+                    <th>Centroid 1: @o365Data.Centroids.Count</th>*@
             </tr>
         </thead>
         <tbody>
