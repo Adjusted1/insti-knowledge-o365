@@ -41,18 +41,15 @@ namespace blazor_base
         {
             return Regex.Replace(source, "<.*?>", string.Empty);
         }
-        private void LoadDocuments(object item, int i)
+        private void LoadDocuments(int i)
         {
             var combined = "";
             try
             {
-                foreach (string s in O365Data.Subject) /*item.Body.Split(' ')*/
+                foreach (string s in O365Data.Subject)
                 {
-                    combined += s + " "; 
-                }
-                //combined += item.SenderEmailAddress + " ";
-                //combined += item.Subject + " ";
-                documents[i] = StripTagsRegex(combined);
+                    documents[i] = StripTagsRegex(s);
+                }                
             }
             catch { }
         }
@@ -62,11 +59,9 @@ namespace blazor_base
             try
             {
                 int i = 0;
-                foreach (dynamic item in O365Data.Subject)
+                foreach (string subj in O365Data.Subject)
                 {
-                    if (item is object)
-                    {
-                        LoadDocuments(item, i); // subjects are addiong together into one document - incorrect behavior
+                        LoadDocuments(i); // subjects are addiong together into one document - incorrect behavior
                         i++;
                         if (i == O365Data._documents)
                         {
@@ -93,7 +88,6 @@ namespace blazor_base
                                 ///MessageBox.Show(exc.ToString());
                             }
                             break;
-                        }
                     }
                 }
             }
