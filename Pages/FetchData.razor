@@ -9,34 +9,30 @@
 
 <p>This WebApp consumes O365 email and Clusters the content into unlabeled groups</p>
 
-
-@if (o365Data.Clustering == true)
+@if (!isLoaded)
 {
-    <br />
-    <p>working...</p>
+    <p>working</p>
     <Fold />
-    <br />
 }
-
 else
 {
+   
+<table class="table">
+    <thead>
+        <tr>
+            <th>Logged in? @o365Data.LoggedIn.ToString()</th>
+            <th>Number of Clusters @o365Data.kStr.ToString() </th>
+            <th>Clustered? @o365Data.Clustered.ToString()</th>
+        </tr>
+    </thead>
+    <tbody>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Logged in? @o365Data.LoggedIn.ToString()</th>
-                <th>Number of Clusters @o365Data.kStr.ToString() </th>
-                <th>Clustered? @o365Data.Clustering.ToString()</th>
-            </tr>
-        </thead>
-        <tbody>
+        @*<tr>
+                <td> k =  @o365Data.kStr</td>
+            </tr>*@
 
-            @*<tr>
-                    <td> k =  @o365Data.kStr</td>
-                </tr>*@
-
-        </tbody>
-    </table>
+    </tbody>
+</table>
 }
 
 
@@ -58,27 +54,39 @@ else
 
 @code {
 
+    bool isLoaded;
     private O365Data o365Data = null;
 
     protected override async Task OnInitializedAsync()
     {
+
         await base.OnInitializedAsync();
 
         if (o365Data == null)
         {
             o365Data = new O365Data();
+            //}
+            //Clustering = o365Data.Clustering;
+            //Clustered = o365Data.Clustered;
         }
-        Clustering = o365Data.Clustering;
-
     }
-
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+        isLoaded = true;
+    }
     private ElementReference buttonSend;
     private ElementReference buttonCluster;
     private bool Clustering = false;
-
+    private bool Clustered = false;
     public async Task SendCredsGetData()
     {
+        //Clustered = false;
+        isLoaded = false;
         await Task.Run(() => o365Data.GetData());
+        isLoaded = true;
+        //Clustering = o365Data.Clustering;
+        //Clustered = o365Data.Clustered;
         //StateHasChanged();
         //if (o365Data.LoggedIn)
         //{

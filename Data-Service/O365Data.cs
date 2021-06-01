@@ -27,6 +27,7 @@ namespace blazor_base
         public string Password { get; set; }
         public bool IsReadyToML { get; set; } = false;
         public bool Clustering { get; set; } = false;
+        public bool Clustered { get; set; } = false;
         private Ingestor ingestor = null;
         public async void GetData() 
         {
@@ -89,7 +90,7 @@ namespace blazor_base
                 //WriteCSV();
             }
             Clustering = false;
-
+            Clustered = true;
     }
         public O365Data()
         {
