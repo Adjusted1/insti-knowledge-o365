@@ -13,6 +13,7 @@ namespace blazor_base
 {
     public class O365Data : MLengine
     {
+        private Ingestor _ingestor;
         public string kStr { get; set; }
         public string documents { get; set; }
         public static int k { get; set; }
@@ -28,8 +29,11 @@ namespace blazor_base
         public void GetData() 
         {
             k = Int32.Parse(kStr);
+            _documents = k;
             ExchangeServices.k = k;
             ExchangeServices.Login(Username, Password);
+            _ingestor = new Ingestor();
+            int i = 0;
             try
             {
                 var items = ExchangeServices.exchange.FindItems(WellKnownFolderName.Inbox, ExchangeServices.itemView);
@@ -41,11 +45,15 @@ namespace blazor_base
                         {
                             _item.Load();
                             //_item.Load(new PropertySet(BasePropertySet.FirstClassProperties));
-                            Subject.Add(_item.Body.Text);
+                            Subject.Add(_item.Subject);
+                            _ingestor.documents[i] = _item.Subject;
+                            
                             //Body.Add(_item.Subject);
                         }
+                        i++;
                     }
-                    catch { }
+                    catch { i++; }
+
                 }
             }
             catch (Exception e)
@@ -61,7 +69,7 @@ namespace blazor_base
             if (IsReadyToML)
             {
                 k = Int32.Parse(kStr);
-                _documents = Int32.Parse(documents);
+                
                 if (ingestor == null)
                 {
                     ingestor = new Ingestor();
