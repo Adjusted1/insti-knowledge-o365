@@ -11,8 +11,10 @@
 
 @if (!isLoaded)
 {
+    <br />
     <p>working</p>
     <Fold />
+    <br />
 }
 else
 {
@@ -25,13 +27,6 @@ else
             <th>Clustered? @o365Data.Clustered.ToString()</th>
         </tr>
     </thead>
-    <tbody>
-
-        @*<tr>
-                <td> k =  @o365Data.kStr</td>
-            </tr>*@
-
-    </tbody>
 </table>
 }
 
@@ -65,9 +60,6 @@ else
         if (o365Data == null)
         {
             o365Data = new O365Data();
-            //}
-            //Clustering = o365Data.Clustering;
-            //Clustered = o365Data.Clustered;
         }
     }
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -85,17 +77,6 @@ else
         isLoaded = false;
         await Task.Run(() => o365Data.GetData());
         isLoaded = true;
-        //Clustering = o365Data.Clustering;
-        //Clustered = o365Data.Clustered;
-        //StateHasChanged();
-        //if (o365Data.LoggedIn)
-        //{
-        //    Clustering = true;
-        //}
-        //if (o365Data.ClusterSuccess)
-        //{
-        //    Clustering = false;
-        //}
     }
 
 }

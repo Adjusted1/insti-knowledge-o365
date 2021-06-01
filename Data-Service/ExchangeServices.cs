@@ -43,20 +43,6 @@ namespace blazor_base.Data_Service
                 System.Diagnostics.Debug.WriteLine(e.ToString());
             }
         }
-        //private static void GraphUserPassLogin()
-        //{
-        //    Microsoft.Graph.PublicClientApplication publicClientApplication = PublicClientApplicationBuilder
-        //    .Create(clientId)
-        //    .WithTenantId(tenantID)
-        //    .Build();
-
-        //    UsernamePasswordProvider authProvider = new UsernamePasswordProvider(publicClientApplication, scopes);
-
-        //    GraphServiceClient graphClient = new GraphServiceClient(authProvider);
-
-        //    User me = await graphClient.Me.Request()
-        //                    .WithUsernamePassword(email, password)
-        //                    .GetAsync();
-        //}
+       
     }
 }

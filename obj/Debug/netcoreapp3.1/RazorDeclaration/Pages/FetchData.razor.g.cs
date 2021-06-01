@@ -91,7 +91,7 @@ using BlazorPro.Spinkit;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 55 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
+#line 50 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
        
 
     bool isLoaded;
@@ -105,9 +105,6 @@ using BlazorPro.Spinkit;
         if (o365Data == null)
         {
             o365Data = new O365Data();
-            //}
-            //Clustering = o365Data.Clustering;
-            //Clustered = o365Data.Clustered;
         }
     }
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -125,17 +122,6 @@ using BlazorPro.Spinkit;
         isLoaded = false;
         await Task.Run(() => o365Data.GetData());
         isLoaded = true;
-        //Clustering = o365Data.Clustering;
-        //Clustered = o365Data.Clustered;
-        //StateHasChanged();
-        //if (o365Data.LoggedIn)
-        //{
-        //    Clustering = true;
-        //}
-        //if (o365Data.ClusterSuccess)
-        //{
-        //    Clustering = false;
-        //}
     }
 
 

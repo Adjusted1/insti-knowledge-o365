@@ -87,7 +87,7 @@ namespace blazor_base
                     ingestor.process();
                     //Centroids = ingestor.documents.ToList();
                 }
-                //WriteCSV();
+                WriteCSV();
             }
             Clustering = false;
             Clustered = true;

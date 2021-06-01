@@ -37,7 +37,6 @@ namespace blazor_base
             double[][] centroids = kmeans.Centroids;
             labels = clusters.Decide(observations);
             double err = kmeans.Error;
-            //MessageBox.Show("Within Cluster mean err: " + err.ToString());
         }
         private static T[,] To2D<T>(T[][] source)
         {

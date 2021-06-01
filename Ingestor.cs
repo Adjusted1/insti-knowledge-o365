@@ -22,11 +22,6 @@ namespace blazor_base
 {
     public class Ingestor : MLengine
     {
-        //private static int numberOfDocs { get; set; } = 32; // max number messages allowed for now
-        //private int k { get; set; }
-
-        //string numstr = null;
-        //string kstr = null;
 
         double[][] observations = new double[O365Data._documents][];
         public string[] documents = new string[O365Data._documents];
@@ -35,14 +30,16 @@ namespace blazor_base
         static List<string> subFolderTopWords = new List<string>();
         public Ingestor() 
         {
-            //this.k = O365Data.k;
-            //numberOfDocs = O365Data._documents;        
         }
 
         private static String Remove(String s)
         {
             var rs = s.Split(new[] { '"' }).ToList();
             return String.Join("\"\"", rs.Where(_ => rs.IndexOf(_) % 2 == 0));
+        }
+        public static string StripTagsRegex(string source)
+        {
+            return Regex.Replace(source, "<.*?>", string.Empty);
         }
         private void LoadDocuments(object item, int i)
         {
@@ -55,25 +52,21 @@ namespace blazor_base
                 }
                 //combined += item.SenderEmailAddress + " ";
                 //combined += item.Subject + " ";
-                documents[i] = combined;
+                documents[i] = StripTagsRegex(combined);
             }
             catch { }
         }
-        // *** NOTE: outlook app object not available if debug breakpoint is not set in startup method!
+        
         public void process()
         {
             try
             {
-                //outlookApplication = Marshal.GetActiveObject("Outlook.Application") as Outlook.Application;
-                //outlookNamespace = outlookApplication.GetNamespace("MAPI");
-                //inboxFolder = outlookNamespace.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
-                //mailItems = inboxFolder.Items;
                 int i = 0;
-                foreach (dynamic item in O365Data.Subject) // dynamic, or com tries to tie non mail items to wrong interface
+                foreach (dynamic item in O365Data.Subject)
                 {
                     if (item is object)
                     {
-                        LoadDocuments(item, i);
+                        LoadDocuments(item, i); // subjects are addiong together into one document - incorrect behavior
                         i++;
                         if (i == O365Data._documents)
                         {
@@ -90,6 +83,7 @@ namespace blazor_base
                                 //tfidf.TFIDF.Save();
                                 //ml.AHC(observations, k);
                                 //ClearFolders();
+                                DelFolders();
                                 MakeFolders(labels);
                                 StuffFolders(labels);
                                 //EnumerateFoldersGetTopWordsPerFolder();
@@ -106,30 +100,25 @@ namespace blazor_base
             catch (System.Exception ex) { /*CALL JS Alert w/err */ }
             finally
             {
-                //ReleaseComObject(mailItems);
-                //ReleaseComObject(inboxFolder);
-                //ReleaseComObject(outlookNamespace);
-                //mailItems = null;
-                //inboxFolder = null;
-                //outlookNamespace = null;
             }
         }
-        private void DelFolder(string folderName)
+        private void DelFolders()
         {
-            //Outlook.MAPIFolder inBox = (Outlook.MAPIFolder)
-            //    this.Application.ActiveExplorer().Session.GetDefaultFolder
-            //    (Outlook.OlDefaultFolders.olFolderInbox);
             try
             {
-                //this.Application.ActiveExplorer().CurrentFolder = inBox.
-                //    Folders[folderName];
-                //this.Application.ActiveExplorer().CurrentFolder.Delete();
-
+                FindFoldersResults findResults = ExchangeServices.exchange.FindFolders(WellKnownFolderName.Inbox, 
+                    new FolderView(int.MaxValue) { Traversal = FolderTraversal.Deep });
+                foreach (Folder folder in findResults.Folders)
+                {
+                    if (folder.DisplayName.Contains("unlabeled"))
+                    {
+                        folder.Delete(DeleteMode.HardDelete);
+                    }
+                }
             }
-            catch
+            catch (Exception e)
             {
-                //MessageBox.Show("There is no folder named " + folderName +
-                //    ".", "Find Folder Name");
+                System.Diagnostics.Debug.WriteLine(e.ToString());
             }
         }
         public void StuffFolders(int[] labels)
@@ -324,103 +313,6 @@ namespace blazor_base
                 }
             }
         }
-        //private void ThisAddIn_Startup(object sender, System.EventArgs e)
-        //{
-        //    string dummy = "noinput";
-
-        //    //Task.Run(() => NonBlockingDialogs());
-
-        //    //InputBox("Click OK when parameters have been entered", "-> Ready to Tidy up your Inbox? <-", ref dummy);
-        //    //InputBox("Enter the number of Email Categories you want the AI to fill in", "Enter number of Centroids(k): ", ref kstr);
-        //    //while ((numstr == null) && (kstr == null))
-        //    //{
-        //    numberOfDocs = Convert.ToInt16(numberOfDocs);
-        //    Task.Run(() => process()); // fire and forget ahahahahhaa
-
-        //}
-        //private void ReleaseComObject(object o)
-        //{
-        //    if (o != null)
-        //    {
-        //        System.Runtime.InteropServices.Marshal.ReleaseComObject(o);
-        //        o = null;
-        //    }
-        //}
-        //private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
-        //{
-        //    // Note: Outlook no longer raises this event. If you have code that 
-        //    //    must run when Outlook shuts down, see https://go.microsoft.com/fwlink/?LinkId=506785
-        //}
-        #region VSTO generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        //private void InternalStartup()
-        //{
-        //    //this.Startup += new System.EventHandler(ThisAddIn_Startup);
-        //    //this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);
-        //    //this.Application.ItemLoad += ApplicationItemLoad;
-        //}
-        //private void NonBlockingDialogs()
-        //{
-        //    //InputBox("Select # Inbox Messages to process ", "Max = 65536: ", ref numstr);
-        //    //InputBox("Enter the number of Email Categories you want", "Max = 128: ", ref kstr);
-        //}
-        #endregion
-        //public static DialogResult InputBox(string title, string promptText, ref string value)
-        //{
-        //    Form form = new Form();
-        //    Label label = new Label();
-        //    TextBox textBox = new TextBox();
-        //    Button buttonOk = new Button();
-        //    Button buttonCancel = new Button();
-
-        //    form.Text = title;
-        //    label.Text = promptText;
-        //    textBox.Text = value;
-
-        //    buttonOk.Text = "OK";
-        //    buttonCancel.Text = "Cancel";
-        //    buttonOk.DialogResult = DialogResult.OK;
-        //    buttonCancel.DialogResult = DialogResult.Cancel;
-
-        //    label.SetBounds(9, 20, 372, 13);
-        //    textBox.SetBounds(12, 36, 372, 20);
-        //    buttonOk.SetBounds(228, 72, 75, 23);
-        //    buttonCancel.SetBounds(309, 72, 75, 23);
-
-        //    label.AutoSize = true;
-        //    textBox.Anchor = textBox.Anchor | AnchorStyles.Right;
-        //    buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-        //    buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-
-        //    Random r = new Random();
-        //    r.Next();
-        //    int coord = r.Next(200, 400);
-
-        //    form.ClientSize = new Size(396, 107);
-        //    form.Controls.AddRange(new Control[] { label, textBox, buttonOk, buttonCancel });
-        //    form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
-        //    form.FormBorderStyle = FormBorderStyle.FixedDialog;
-        //    form.StartPosition = FormStartPosition.Manual;
-        //    form.Left = coord;
-        //    form.Top = coord;
-        //    form.MinimizeBox = false;
-        //    form.MaximizeBox = false;
-        //    form.AcceptButton = buttonOk;
-        //    form.CancelButton = buttonCancel;
-
-        //    if (value == "noinput")
-        //    {
-        //        form.Controls.Remove(textBox);
-        //    }
-
-        //    DialogResult dialogResult = form.ShowDialog();
-        //    value = textBox.Text;
-        //    return dialogResult;
-        //}
 
     }
 }
