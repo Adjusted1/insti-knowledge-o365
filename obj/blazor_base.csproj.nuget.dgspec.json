@@ -53,6 +53,14 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "Microsoft.Graph": {
+              "target": "Package",
+              "version": "[3.33.0, )"
+            },
+            "Microsoft.Identity.Client": {
+              "target": "Package",
+              "version": "[4.31.0, )"
+            },
             "System.Diagnostics.Debug": {
               "target": "Package",
               "version": "[4.3.0, )"

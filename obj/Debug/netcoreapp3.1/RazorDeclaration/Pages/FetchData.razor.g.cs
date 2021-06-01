@@ -75,6 +75,13 @@ using blazor_base;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
+using Faso.Blazor.SpinKit;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/fetchdata")]
     public partial class FetchData : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -84,25 +91,7 @@ using blazor_base;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 26 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
-      
-    [Parameter]
-    public bool IsLoading { get; set; }
-
-    [Parameter]
-    public string LoadingText { get; set; } = "Loading...";
-
-    [Parameter]
-    public RenderFragment LoadingTemplate { get; set; }
-
-    [Parameter]
-    public RenderFragment ChildContent { get; set; }
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 103 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
+#line 77 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
        
 
     private O365Data o365Data = null;
