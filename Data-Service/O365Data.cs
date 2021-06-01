@@ -11,6 +11,7 @@ using blazor_base.Data_Service;
 
 namespace blazor_base
 {
+    [Serializable]
     public class O365Data : MLengine
     {
         private Ingestor _ingestor;
@@ -24,14 +25,16 @@ namespace blazor_base
         public bool LoggedIn { get; set; } = false;
         public string Username { get; set; }
         public string Password { get; set; }
-        private bool IsReadyToML { get; set; } = false;
+        public bool IsReadyToML { get; set; } = false;
+        public bool ClusterSuccess { get; set; } = false;
         private Ingestor ingestor = null;
-        public void GetData() 
+        public async void GetData() 
         {
             k = Int32.Parse(kStr);
             _documents = k;
             ExchangeServices.k = k;
             ExchangeServices.Login(Username, Password);
+            LoggedIn = true;
             _ingestor = new Ingestor();
             int i = 0;
             try
@@ -46,7 +49,7 @@ namespace blazor_base
                             _item.Load();
                             //_item.Load(new PropertySet(BasePropertySet.FirstClassProperties));
                             Subject.Add(_item.Subject);
-                            _ingestor.documents[i] = _item.Subject;
+                            //_ingestor.documents[i] = _item.Subject;
                             
                             //Body.Add(_item.Subject);
                         }
@@ -58,6 +61,7 @@ namespace blazor_base
             }
             catch (Exception e)
             {
+                LoggedIn = false;
                 System.Diagnostics.Debug.WriteLine(e.ToString());
             }
             IsReadyToML = true;
@@ -81,21 +85,23 @@ namespace blazor_base
                     ingestor.process();
                     //Centroids = ingestor.documents.ToList();
                 }
-                WriteCSV();
+                //WriteCSV();
             }
-        }
+            ClusterSuccess = true;
+
+    }
         public O365Data()
         {
             
-            async System.Threading.Tasks.Task AsyncAwaitForDataLoad()
-            {
-                await AsyncWaitForDataLoadComplete();
-                IsReadyToML = true;                
-            }
-            async System.Threading.Tasks.Task AsyncWaitForDataLoadComplete()
-            {   // Wait for this constructor code to verify a successfull login
-                while(!LoggedIn) { }
-            }
+            //async System.Threading.Tasks.Task AsyncAwaitForDataLoad()
+            //{
+            //    await AsyncWaitForDataLoadComplete();
+            //    IsReadyToML = true;                
+            //}
+            //async System.Threading.Tasks.Task AsyncWaitForDataLoadComplete()
+            //{   // Wait for this constructor code to verify a successfull login
+            //    while(!LoggedIn) { }
+            //}
         }
 
         public void WriteCSV()

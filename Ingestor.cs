@@ -49,13 +49,10 @@ namespace blazor_base
             var combined = "";
             try
             {
-                foreach (string s in O365Data.Body) /*item.Body.Split(' ')*/
+                foreach (string s in O365Data.Subject) /*item.Body.Split(' ')*/
                 {
                     combined += s + " "; 
                 }
-
-                
-
                 //combined += item.SenderEmailAddress + " ";
                 //combined += item.Subject + " ";
                 documents[i] = combined;

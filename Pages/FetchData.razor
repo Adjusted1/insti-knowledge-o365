@@ -9,22 +9,23 @@
 <p>This WebApp consumes O365 email and Clusters the content into unlabeled groups</p>
 
 
-
-@if (!submissionSuccess)
+@if ((o365Data.LoggedIn) && (o365Data.ClusterSuccess == false))
 {
-    <p>You are not logged in</p>
+    <p>Classifying... </p>
+    <SpinKitCubeGrid />
 }
 else
 {
-    <SpinKitCubeGrid />
+
     <table class="table">
         <thead>
             <tr>
                 <th>Logged in? @o365Data.LoggedIn.ToString()</th>
+                <th>Clustered? @o365Data.ClusterSuccess.ToString()</th>
                 @*<th>Subject</th>*@
                 @*<th>Body</th>*@
                 @*<th>Centroid 0:</th>
-                    <th>Centroid 1: @o365Data.Centroids.Count</th>*@
+        <th>Centroid 1: @o365Data.Centroids.Count</th>*@
             </tr>
         </thead>
         <tbody>
@@ -80,22 +81,44 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        o365Data = new O365Data();
+        await base.OnInitializedAsync();
+        if (o365Data == null)
+        {
+            o365Data = new O365Data();
+        }
+
+        //if (o365Data.LoggedIn)
+        //{
+        //    isLoggingIn = false;
+        //}
+        //if (o365Data.IsReadyToML)
+        //{
+        //    submissionSuccess = true;
+        //}
+        //if (o365Data.ClusterSuccess)
+        //{
+        //    clusterSuccess = true;
+        //}
     }
 
     private ElementReference buttonSend;
     private ElementReference buttonCluster;
 
-    private bool submissionSuccess = false;
-    private bool clusterSuccess = false;
+    //private bool submissionSuccess = false;
+    //private bool clusterSuccess = false;
+    //private bool isLoggingIn = false;
 
     public async Task SendCredsGetData()
     {
-        o365Data.GetData();
-        if (o365Data.LoggedIn) { submissionSuccess = true; }
+        await Task.Run(() => o365Data.GetData());
+        //if (o365Data.LoggedIn)
+        //{
+        //    isLoggingIn = false;
+        //    submissionSuccess = true;
+        //}
     }
 
-    public async Task ClusterTheData() { }
+    //public async Task ClusterTheData() { }
 }
 
 

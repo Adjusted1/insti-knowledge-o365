@@ -91,29 +91,51 @@ using Faso.Blazor.SpinKit;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 77 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
+#line 78 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
        
 
     private O365Data o365Data = null;
 
     protected override async Task OnInitializedAsync()
     {
-        o365Data = new O365Data();
+        await base.OnInitializedAsync();
+        if (o365Data == null)
+        {
+            o365Data = new O365Data();
+        }
+
+        //if (o365Data.LoggedIn)
+        //{
+        //    isLoggingIn = false;
+        //}
+        //if (o365Data.IsReadyToML)
+        //{
+        //    submissionSuccess = true;
+        //}
+        //if (o365Data.ClusterSuccess)
+        //{
+        //    clusterSuccess = true;
+        //}
     }
 
     private ElementReference buttonSend;
     private ElementReference buttonCluster;
 
-    private bool submissionSuccess = false;
-    private bool clusterSuccess = false;
+    //private bool submissionSuccess = false;
+    //private bool clusterSuccess = false;
+    //private bool isLoggingIn = false;
 
     public async Task SendCredsGetData()
     {
-        o365Data.GetData();
-        if (o365Data.LoggedIn) { submissionSuccess = true; }
+        await Task.Run(() => o365Data.GetData());
+        //if (o365Data.LoggedIn)
+        //{
+        //    isLoggingIn = false;
+        //    submissionSuccess = true;
+        //}
     }
 
-    public async Task ClusterTheData() { }
+    //public async Task ClusterTheData() { }
 
 #line default
 #line hidden
