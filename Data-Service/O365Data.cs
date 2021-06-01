@@ -15,10 +15,12 @@ namespace blazor_base
     public class O365Data : MLengine
     {
         private Ingestor _ingestor;
+
         public string kStr { get; set; } = "0";
-        public string documents { get; set; }
+        public string NumberOfDocs { get; set; } = "0";
         public static int k { get; set; }
-        public static int _documents { get; set; }
+        public static int numberOfDocuments { get; set; }
+
         public static List<string> Subject = new List<string>();
         public static List<string> Body = new List<string>();
         public List<string> Centroids = new List<string>();
@@ -33,15 +35,15 @@ namespace blazor_base
         {
             Clustering = true;
             k = Int32.Parse(kStr);
-            _documents = k;
+            numberOfDocuments = Int32.Parse(NumberOfDocs);
             ExchangeServices.k = k;
             ExchangeServices.Login(Username, Password);
             LoggedIn = true;
             _ingestor = new Ingestor();
             int i = 0;
+            var items = ExchangeServices.exchange.FindItems(WellKnownFolderName.Inbox, ExchangeServices.itemView);
             try
-            {
-                var items = ExchangeServices.exchange.FindItems(WellKnownFolderName.Inbox, ExchangeServices.itemView);
+            {                
                 foreach (Item _item in items)
                 {
                     try
@@ -58,7 +60,7 @@ namespace blazor_base
                         i++;
                     }
                     catch { i++; }
-
+                    if(i == numberOfDocuments) { break; }
                 }
             }
             catch (Exception e)
@@ -80,12 +82,12 @@ namespace blazor_base
                 {
                     ingestor = new Ingestor();
                     ingestor.process();
-                    //Centroids = ingestor.documents.ToList();
+                    Centroids = ingestor.documents.ToList();
                 }
                 else
                 {
                     ingestor.process();
-                    //Centroids = ingestor.documents.ToList();
+                    Centroids = ingestor.documents.ToList();
                 }
                 WriteCSV();
             }

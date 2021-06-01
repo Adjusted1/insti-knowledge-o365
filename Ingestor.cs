@@ -23,8 +23,8 @@ namespace blazor_base
     public class Ingestor : MLengine
     {
 
-        double[][] observations = new double[O365Data._documents][];
-        public string[] documents = new string[O365Data._documents];
+        double[][] observations = new double[O365Data.numberOfDocuments][];
+        public string[] documents = new string[O365Data.numberOfDocuments];
 
         static List<string> subFolderAllWords = new List<string>();
         static List<string> subFolderTopWords = new List<string>();
@@ -42,16 +42,8 @@ namespace blazor_base
             return Regex.Replace(source, "<.*?>", string.Empty);
         }
         private void LoadDocuments(int i)
-        {
-            var combined = "";
-            try
-            {
-                foreach (string s in O365Data.Subject)
-                {
-                    documents[i] = StripTagsRegex(s);
-                }                
-            }
-            catch { }
+        {          
+            documents[i] = StripTagsRegex(O365Data.Subject[i]);
         }
         
         public void process()
@@ -61,39 +53,33 @@ namespace blazor_base
                 int i = 0;
                 foreach (string subj in O365Data.Subject)
                 {
-                        LoadDocuments(i); // subjects are addiong together into one document - incorrect behavior
+                        LoadDocuments(i);
                         i++;
-                        if (i == O365Data._documents)
-                        {
-                            // run that bitch
-                            MLengine ml = new MLengine();
-                            try
-                            {
-                                // Apply TF*IDF to the documents and get the resulting vectors.
-                                double[][] inputs = Institutional_Knowledge_Learner_VSTO.tfidf.TFIDF.Transform(documents);
-                                inputs = tfidf.TFIDF.Normalize(inputs);
-                                observations = inputs;
-                                int[] labels = new int[O365Data.k];
-                                ml.Engine(observations, O365Data.k, ref labels);
-                                //tfidf.TFIDF.Save();
-                                //ml.AHC(observations, k);
-                                //ClearFolders();
-                                DelFolders();
-                                MakeFolders(labels);
-                                StuffFolders(labels);
-                                //EnumerateFoldersGetTopWordsPerFolder();
-                            }
-                            catch (System.Exception exc)
-                            {
-                                ///MessageBox.Show(exc.ToString());
-                            }
-                            break;
-                    }
+                }
+                MLengine ml = new MLengine();
+                try
+                {
+                    // Apply TF*IDF to the documents and get the resulting vectors.
+                    double[][] inputs = Institutional_Knowledge_Learner_VSTO.tfidf.TFIDF.Transform(documents);
+                    inputs = TFIDF.Normalize(inputs);
+                    observations = inputs;
+                    int[] labels = new int[O365Data.k];
+                    ml.Engine(observations, O365Data.k, ref labels);
+                    //tfidf.TFIDF.Save();
+                    //ml.AHC(observations, k);
+                    //ClearFolders();
+                    DelFolders();
+                    MakeFolders(labels);
+                    StuffFolders(labels);
+                    //EnumerateFoldersGetTopWordsPerFolder();
+                }
+                catch (System.Exception exc)
+                {
+                    ///MessageBox.Show(exc.ToString());
                 }
             }
-            catch (System.Exception ex) { /*CALL JS Alert w/err */ }
-            finally
-            {
+            catch (System.Exception ex) 
+            { /*CALL JS Alert w/err */ 
             }
         }
         private void DelFolders()

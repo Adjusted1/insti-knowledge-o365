@@ -40,17 +40,39 @@ else
     p:assword
     <InputText id="Password" @bind-Value="o365Data.Password" type="password"></InputText>
     N:umber of Clusters
-    <InputText id="kStr" @bind-Value="o365Data.kStr">2</InputText>
+    <InputText id="kStr" @bind-Value="o365Data.kStr"></InputText>
     N:umber of Msgs to Cluster
-    <InputText id="documents" @bind-Value="o365Data.documents">2</InputText>
+    <InputText id="documents" @bind-Value="o365Data.NumberOfDocs"></InputText>
 
-    <button @ref=buttonSend id="submitter" type="submit">Organize / Cluster my Email</button>
+    <button class="button" @ref=buttonSend onclick="(async () => await OnButtonClick())" id="submitter" type="submit">Organize / Cluster my Email</button>
 </EditForm>
 
+<style>
+    .button {
+        background-color: @BtnBackground;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+</style>
 @code {
 
     bool isLoaded;
     private O365Data o365Data = null;
+
+    public ConsoleColor BtnBackground { get; set; } = ConsoleColor.Yellow;
+
+    private async void OnButtonClick()
+    {
+        BtnBackground = ConsoleColor.Cyan;
+    }
 
     protected override async Task OnInitializedAsync()
     {
@@ -68,12 +90,11 @@ else
         isLoaded = true;
     }
     private ElementReference buttonSend;
-    private ElementReference buttonCluster;
     private bool Clustering = false;
     private bool Clustered = false;
     public async Task SendCredsGetData()
     {
-        //Clustered = false;
+        //Clustered = false;       
         isLoaded = false;
         await Task.Run(() => o365Data.GetData());
         isLoaded = true;

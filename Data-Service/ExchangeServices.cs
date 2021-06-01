@@ -24,7 +24,7 @@ namespace blazor_base.Data_Service
                 {
                     Credentials = new WebCredentials(u, p)
                 };
-                itemView = new ItemView(k);
+                itemView = new ItemView(O365Data.numberOfDocuments);
                 loggedIn = true;
             }
             catch (Exception ex)

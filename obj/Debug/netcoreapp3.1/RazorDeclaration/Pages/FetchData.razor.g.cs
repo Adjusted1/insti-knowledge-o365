@@ -91,11 +91,18 @@ using BlazorPro.Spinkit;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 50 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
+#line 65 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
        
 
     bool isLoaded;
     private O365Data o365Data = null;
+
+    public ConsoleColor BtnBackground { get; set; } = ConsoleColor.Yellow;
+
+    private async void OnButtonClick()
+    {
+        BtnBackground = ConsoleColor.Cyan;
+    }
 
     protected override async Task OnInitializedAsync()
     {
@@ -113,12 +120,11 @@ using BlazorPro.Spinkit;
         isLoaded = true;
     }
     private ElementReference buttonSend;
-    private ElementReference buttonCluster;
     private bool Clustering = false;
     private bool Clustered = false;
     public async Task SendCredsGetData()
     {
-        //Clustered = false;
+        //Clustered = false;       
         isLoaded = false;
         await Task.Run(() => o365Data.GetData());
         isLoaded = true;
