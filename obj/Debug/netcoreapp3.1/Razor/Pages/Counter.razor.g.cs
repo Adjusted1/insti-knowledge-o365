@@ -72,6 +72,13 @@ using blazor_base.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 10 "C:\sources\insti-knowledge-o365\_Imports.razor"
+using BlazorPro.Spinkit;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/counter")]
     public partial class Counter : Microsoft.AspNetCore.Components.ComponentBase
     {

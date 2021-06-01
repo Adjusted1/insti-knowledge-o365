@@ -77,7 +77,7 @@ using blazor_base;
 #nullable disable
 #nullable restore
 #line 4 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
-using Faso.Blazor.SpinKit;
+using BlazorPro.Spinkit;
 
 #line default
 #line hidden
@@ -91,7 +91,7 @@ using Faso.Blazor.SpinKit;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 78 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
+#line 59 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
        
 
     private O365Data o365Data = null;
@@ -99,43 +99,33 @@ using Faso.Blazor.SpinKit;
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
+
         if (o365Data == null)
         {
             o365Data = new O365Data();
         }
+        Clustering = o365Data.Clustering;
 
-        //if (o365Data.LoggedIn)
-        //{
-        //    isLoggingIn = false;
-        //}
-        //if (o365Data.IsReadyToML)
-        //{
-        //    submissionSuccess = true;
-        //}
-        //if (o365Data.ClusterSuccess)
-        //{
-        //    clusterSuccess = true;
-        //}
     }
 
     private ElementReference buttonSend;
     private ElementReference buttonCluster;
-
-    //private bool submissionSuccess = false;
-    //private bool clusterSuccess = false;
-    //private bool isLoggingIn = false;
+    private bool Clustering = false;
 
     public async Task SendCredsGetData()
     {
         await Task.Run(() => o365Data.GetData());
+        //StateHasChanged();
         //if (o365Data.LoggedIn)
         //{
-        //    isLoggingIn = false;
-        //    submissionSuccess = true;
+        //    Clustering = true;
+        //}
+        //if (o365Data.ClusterSuccess)
+        //{
+        //    Clustering = false;
         //}
     }
 
-    //public async Task ClusterTheData() { }
 
 #line default
 #line hidden

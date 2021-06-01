@@ -15,7 +15,7 @@ namespace blazor_base
     public class O365Data : MLengine
     {
         private Ingestor _ingestor;
-        public string kStr { get; set; }
+        public string kStr { get; set; } = "0";
         public string documents { get; set; }
         public static int k { get; set; }
         public static int _documents { get; set; }
@@ -26,10 +26,11 @@ namespace blazor_base
         public string Username { get; set; }
         public string Password { get; set; }
         public bool IsReadyToML { get; set; } = false;
-        public bool ClusterSuccess { get; set; } = false;
+        public bool Clustering { get; set; } = false;
         private Ingestor ingestor = null;
         public async void GetData() 
         {
+            Clustering = true;
             k = Int32.Parse(kStr);
             _documents = k;
             ExchangeServices.k = k;
@@ -87,21 +88,12 @@ namespace blazor_base
                 }
                 //WriteCSV();
             }
-            ClusterSuccess = true;
+            Clustering = false;
 
     }
         public O365Data()
         {
             
-            //async System.Threading.Tasks.Task AsyncAwaitForDataLoad()
-            //{
-            //    await AsyncWaitForDataLoadComplete();
-            //    IsReadyToML = true;                
-            //}
-            //async System.Threading.Tasks.Task AsyncWaitForDataLoadComplete()
-            //{   // Wait for this constructor code to verify a successfull login
-            //    while(!LoggedIn) { }
-            //}
         }
 
         public void WriteCSV()

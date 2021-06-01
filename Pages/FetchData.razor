@@ -1,7 +1,8 @@
 ﻿@page "/fetchdata"
 
 @using blazor_base
-@using Faso.Blazor.SpinKit
+@using BlazorPro.Spinkit
+
 @inject O365Data O365txt
 
 <h1>O:365 C:luster P:harm</h1>
@@ -9,11 +10,14 @@
 <p>This WebApp consumes O365 email and Clusters the content into unlabeled groups</p>
 
 
-@if ((o365Data.LoggedIn) && (o365Data.ClusterSuccess == false))
+@if (o365Data.Clustering == true)
 {
-    <p>Classifying... </p>
-    <SpinKitCubeGrid />
+    <br />
+    <p>working...</p>
+    <Fold />
+    <br />
 }
+
 else
 {
 
@@ -21,34 +25,15 @@ else
         <thead>
             <tr>
                 <th>Logged in? @o365Data.LoggedIn.ToString()</th>
-                <th>Clustered? @o365Data.ClusterSuccess.ToString()</th>
-                @*<th>Subject</th>*@
-                @*<th>Body</th>*@
-                @*<th>Centroid 0:</th>
-        <th>Centroid 1: @o365Data.Centroids.Count</th>*@
+                <th>Number of Clusters @o365Data.kStr.ToString() </th>
+                <th>Clustered? @o365Data.Clustering.ToString()</th>
             </tr>
         </thead>
         <tbody>
 
-            <tr>
-                <td> k =  @o365Data.kStr</td>
-
-                @*@<td>@o365Data.Subject[0]</td>*@
-                @*<td>@o365Data.Body[0]</td>*@
-                <td>@*@o365Data.Centroid[0]*@</td>
-                @*foreach (var s in o365Data.Subject)
-                    {
-                        <td>@s</td>
-                    }*@
-                @*foreach (var st in o365Data.Body)
-                    {
-                        <td>@st</td>
-                    }*@
-                @*foreach (var str in o365Data.Centroid)
-                    {
-                        <td>@str</td>
-                    }*@
-            </tr>
+            @*<tr>
+                    <td> k =  @o365Data.kStr</td>
+                </tr>*@
 
         </tbody>
     </table>
@@ -71,10 +56,6 @@ else
     <button @ref=buttonSend id="submitter" type="submit">Organize / Cluster my Email</button>
 </EditForm>
 
-@*<EditForm Model="@O365txt" OnValidSubmit="(async () => await ClusterTheData())">
-        <button @ref=buttonCluster id="submitter" type="submit">C:::luster</button>
-    </EditForm>*@
-
 @code {
 
     private O365Data o365Data = null;
@@ -82,43 +63,33 @@ else
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
+
         if (o365Data == null)
         {
             o365Data = new O365Data();
         }
+        Clustering = o365Data.Clustering;
 
-        //if (o365Data.LoggedIn)
-        //{
-        //    isLoggingIn = false;
-        //}
-        //if (o365Data.IsReadyToML)
-        //{
-        //    submissionSuccess = true;
-        //}
-        //if (o365Data.ClusterSuccess)
-        //{
-        //    clusterSuccess = true;
-        //}
     }
 
     private ElementReference buttonSend;
     private ElementReference buttonCluster;
-
-    //private bool submissionSuccess = false;
-    //private bool clusterSuccess = false;
-    //private bool isLoggingIn = false;
+    private bool Clustering = false;
 
     public async Task SendCredsGetData()
     {
         await Task.Run(() => o365Data.GetData());
+        //StateHasChanged();
         //if (o365Data.LoggedIn)
         //{
-        //    isLoggingIn = false;
-        //    submissionSuccess = true;
+        //    Clustering = true;
+        //}
+        //if (o365Data.ClusterSuccess)
+        //{
+        //    Clustering = false;
         //}
     }
 
-    //public async Task ClusterTheData() { }
 }
 
 

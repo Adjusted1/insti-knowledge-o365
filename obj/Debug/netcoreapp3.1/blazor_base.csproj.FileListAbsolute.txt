@@ -160,3 +160,17 @@ C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.Graph.dll
 C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.Graph.Core.dll
 C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
 C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\blazor_base.StaticWebAssets.xml
+C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\BlazorComponentUtilities.dll
+C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\BlazorPro.Spinkit.dll
+C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authorization.dll
+C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.dll
+C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.Forms.dll
+C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.Web.dll
+C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Metadata.dll
+C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\sources\insti-knowledge-o365\bin\Debug\netcoreapp3.1\Microsoft.JSInterop.dll
