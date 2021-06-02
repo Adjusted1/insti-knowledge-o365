@@ -74,7 +74,7 @@ namespace blazor_base
                 {
                     // Apply TF*IDF to the documents and get the resulting vectors.
                     double[][] inputs = Institutional_Knowledge_Learner_VSTO.tfidf.TFIDF.Transform(documents);
-                    TFIDF.Save();
+                    //TFIDF.Save();
                     inputs = TFIDF.Normalize(inputs);
                     observations = inputs;
                     int[] labels = new int[O365Data.k];
