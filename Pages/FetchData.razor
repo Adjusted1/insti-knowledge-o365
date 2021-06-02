@@ -25,7 +25,9 @@ else
             <th>Logged in? @o365Data.LoggedIn.ToString()</th>
             <th>Number of Clusters @o365Data.kStr.ToString() </th>
             <th>Clustered? @o365Data.Clustered.ToString()</th>
+
         </tr>
+      
     </thead>
 </table>
 }
@@ -76,7 +78,7 @@ else
 </style>
 @code {
 
-        bool isLoaded;
+    bool isLoaded;
     private O365Data o365Data = null;
 
     public int selected {get; set; } = 1;

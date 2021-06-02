@@ -23,7 +23,8 @@ namespace blazor_base
 
         public static List<string> Subject = new List<string>();
         public static List<string> Body = new List<string>();
-        public List<string> Centroids = new List<string>();
+        public static List<string> Centroids = new List<string>();
+        
         public bool LoggedIn { get; set; } = false;
         public string Username { get; set; }
         public string Password { get; set; }
@@ -82,12 +83,10 @@ namespace blazor_base
                 {
                     ingestor = new Ingestor();
                     ingestor.process();
-                    Centroids = ingestor.documents.ToList();
                 }
                 else
                 {
                     ingestor.process();
-                    Centroids = ingestor.documents.ToList();
                 }
                 WriteCSV();
             }

@@ -131,6 +131,7 @@ namespace blazor_base
 
                         //// Add properties to the email message.
                         message.Subject = item.ToString();
+                        
 
                         // set View
                         FolderView view = new FolderView(100);

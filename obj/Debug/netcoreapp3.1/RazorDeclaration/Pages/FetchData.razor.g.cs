@@ -91,10 +91,10 @@ using BlazorPro.Spinkit;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 77 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
+#line 84 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
        
 
-        bool isLoaded;
+    bool isLoaded;
     private O365Data o365Data = null;
 
     public int selected {get; set; } = 1;
