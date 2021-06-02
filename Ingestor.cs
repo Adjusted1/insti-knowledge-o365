@@ -108,7 +108,7 @@ namespace blazor_base
                 {
                     if (folder.DisplayName.Contains("unlabeled"))
                     {
-                        folder.Delete(DeleteMode.HardDelete);
+                        folder.Delete(DeleteMode.MoveToDeletedItems);
                     }
                 }
             }

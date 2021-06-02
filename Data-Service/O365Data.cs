@@ -59,7 +59,7 @@ namespace blazor_base
                         }
                         i++;
                     }
-                    catch { i++; }
+                    catch(Exception exc) { i++; }
                     if(i == numberOfDocuments) { break; }
                 }
             }
@@ -73,11 +73,11 @@ namespace blazor_base
         }
         private void DoML()
         {
-            
+
             if (IsReadyToML)
             {
                 k = Int32.Parse(kStr);
-                
+
                 if (ingestor == null)
                 {
                     ingestor = new Ingestor();
@@ -91,7 +91,7 @@ namespace blazor_base
             }
             Clustering = false;
             Clustered = true;
-    }
+        }
         public O365Data()
         {
             

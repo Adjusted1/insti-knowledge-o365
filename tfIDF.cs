@@ -161,7 +161,14 @@ namespace Institutional_Knowledge_Learner_VSTO
                 foreach (var value in vector)
                 {
                     // L2-norm: Xi = Xi / Sqrt(X0^2 + X1^2 + .. + Xn^2)
-                    result.Add(value / SqrtSumSquared);
+                    if (SqrtSumSquared != 0)
+                    {
+                        result.Add(value / SqrtSumSquared);
+                    }
+                    else
+                    {
+                        result.Add(1);
+                    }
                 }
 
                 return result.ToArray();
