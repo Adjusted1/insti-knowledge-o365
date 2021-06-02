@@ -37,8 +37,7 @@ namespace blazor_base
             Clustering = true;
             k = Int32.Parse(kStr);
             numberOfDocuments = Int32.Parse(NumberOfDocs);
-            ExchangeServices.k = k;
-            ExchangeServices.Login(Username, Password);
+            ExchangeServices.Login(Username, Password, numberOfDocuments);
             LoggedIn = true;
             _ingestor = new Ingestor();
             int i = 0;

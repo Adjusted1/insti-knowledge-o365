@@ -65,15 +65,11 @@ namespace Institutional_Knowledge_Learner_VSTO
             /// <param name="documents">string[]</param>
             /// <param name="vocabularyThreshold">Minimum number of occurences of the term within all documents</param>
             /// <returns>double[][]</returns>
-            public static double[][] Transform(string[] documents, int vocabularyThreshold = 3)
+            public static double[][] Transform(string[] documents, int vocabularyThreshold = 1)
             {
                 List<List<string>> stemmedDocs;
                 List<string> vocabulary;
 
-                while (vocabularyThreshold > documents.Length)
-                {
-                    vocabularyThreshold--;
-                }
 
                 // Get the vocabulary and stem the documents at the same time.
                 vocabulary = GetVocabulary(documents, out stemmedDocs, vocabularyThreshold);

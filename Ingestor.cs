@@ -65,35 +65,37 @@ namespace blazor_base
                 int i = 0;
                 foreach (string subj in O365Data.Subject)
                 {
-                        LoadDocuments(i);
-                        i++;
-                }
-                
-                MLengine ml = new MLengine();
-                try
-                {
-                    // Apply TF*IDF to the documents and get the resulting vectors.
-                    double[][] inputs = Institutional_Knowledge_Learner_VSTO.tfidf.TFIDF.Transform(documents);
-                    //TFIDF.Save();
-                    inputs = TFIDF.Normalize(inputs);
-                    observations = inputs;
-                    int[] labels = new int[O365Data.k];
-                    ml.Engine(observations, O365Data.k, ref labels);
-                    //tfidf.TFIDF.Save();
-                    //ml.AHC(observations, k);
-                    //ClearFolders();
-                    DelFolders();
-                    MakeFolders(labels);
-                    StuffFolders(labels);
-                    //EnumerateFoldersGetTopWordsPerFolder();
-                }
-                catch (System.Exception exc)
-                {
-                    ///MessageBox.Show(exc.ToString());
+                    LoadDocuments(i);
+                    i++;
+                    if (i == O365Data.numberOfDocuments)
+                    {
+                        MLengine ml = new MLengine();
+                        try
+                        {
+                            // Apply TF*IDF to the documents and get the resulting vectors.
+                            double[][] inputs = Institutional_Knowledge_Learner_VSTO.tfidf.TFIDF.Transform(documents);
+                            //TFIDF.Save();
+                            inputs = tfidf.TFIDF.Normalize(inputs);
+                            observations = inputs;
+                            int[] labels = new int[O365Data.numberOfDocuments];
+                            ml.Engine(observations, O365Data.k, ref labels);
+                            //tfidf.TFIDF.Save();
+                            //ml.AHC(observations, k);
+                            //ClearFolders();
+                            DelFolders();
+                            MakeFolders(labels);
+                            StuffFolders(labels);
+                            //EnumerateFoldersGetTopWordsPerFolder();
+                        }
+                        catch (System.Exception exc)
+                        {
+                            // MessageBox.Show(exc.ToString());
+                        }
+                    }
                 }
             }
-            catch (System.Exception ex) 
-            { /*CALL JS Alert w/err */ 
+            catch (System.Exception ex)
+            { /*CALL JS Alert w/err */
             }
         }
         private void DelFolders()
@@ -120,10 +122,9 @@ namespace blazor_base
             try
             {
                 int i = 0;
-                foreach (dynamic item in this.documents)
+                foreach (string item in this.documents)
                 {
-                    if (item is object)
-                    {
+                    
                         int j = labels[i];
                         string folderName = "unlabeled - " + i.ToString();
                         // Ceate an email message and identify the Exchange service.
@@ -148,63 +149,18 @@ namespace blazor_base
                             if (f.DisplayName == folderName)
                             {
                                 F = f;
+                                message.Save();
+                                // Copy the orignal message into another folder in the mailbox and store the returned item.
+                                message.Copy(F.Id);
+                            }
+                            else
+                            {
+
                             }
                         }
-                        
-                        message.Save();
+                        i++;                    
 
-                        // Copy the orignal message into another folder in the mailbox and store the returned item.
-                        message.Copy(F.Id);
-
-                        //message.Send();
-                        #region
-                        //case 0:
-                        //    MAPIFolder destFolder1 = inboxFolder.Folders["clustered-0"];
-                        //    Outlook.MailItem copyItem1 = item.Copy();
-                        //    copyItem1.Move(destFolder1);
-                        //    break;
-                        //case 1:
-                        //    MAPIFolder destFolder2 = inboxFolder.Folders["clustered-1"];
-                        //    Outlook.MailItem copyItem2 = item.Copy();
-                        //    copyItem2.Move(destFolder2);
-                        //    break;
-                        //case 2:
-                        //    MAPIFolder destFolder3 = inboxFolder.Folders["clustered-2"];
-                        //    Outlook.MailItem copyItem3 = item.Copy();
-                        //    copyItem3.Move(destFolder3);
-                        //    break;
-                        //case 3:
-                        //    MAPIFolder destFolder4 = inboxFolder.Folders["clustered-3"];
-                        //    Outlook.MailItem copyItem4 = item.Copy();
-                        //    copyItem4.Move(destFolder4);
-                        //    break;
-                        //case 4:
-                        //    MAPIFolder destFolder5 = inboxFolder.Folders["clustered-4"];
-                        //    Outlook.MailItem copyItem5 = item.Copy();
-                        //    copyItem5.Move(destFolder5);
-                        //    break;
-                        //case 5:
-                        //    MAPIFolder destFolder6 = inboxFolder.Folders["clustered-5"];
-                        //    Outlook.MailItem copyItem6 = item.Copy();
-                        //    copyItem6.Move(destFolder6);
-                        //    break;
-                        //case 6:
-                        //    MAPIFolder destFolder7 = inboxFolder.Folders["clustered-6"];
-                        //    Outlook.MailItem copyItem7 = item.Copy();
-                        //    copyItem7.Move(destFolder7);
-                        //    break;
-                        //case 7:
-                        //    MAPIFolder destFolder8 = inboxFolder.Folders["clustered-7"];
-                        //    Outlook.MailItem copyItem8 = item.Copy();
-                        //    copyItem8.Move(destFolder8);
-                        //    break;
-
-                        //}
-                        #endregion
-                        i++;
-                    }
-
-                    if (i == O365Data.k) { break; }
+                    if (i == O365Data.numberOfDocuments) { break; }
                 }
             }
             catch (ServiceResponseException sre) { System.Diagnostics.Debug.WriteLine(sre.ToString()); }

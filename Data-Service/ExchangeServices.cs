@@ -15,8 +15,8 @@ namespace blazor_base.Data_Service
         public static ExchangeService exchange = null;
         public static ItemView itemView = null;
         public static Mailbox mailbox = null;
-        public static int k { get; set; }
-        public static void Login(string u, string p)
+        //public static int k { get; set; }
+        public static void Login(string u, string p, int numdocs)
         {
             try
             {
@@ -24,7 +24,7 @@ namespace blazor_base.Data_Service
                 {
                     Credentials = new WebCredentials(u, p)
                 };
-                itemView = new ItemView(O365Data.numberOfDocuments);
+                itemView = new ItemView(numdocs);
                 loggedIn = true;
             }
             catch (Exception ex)
