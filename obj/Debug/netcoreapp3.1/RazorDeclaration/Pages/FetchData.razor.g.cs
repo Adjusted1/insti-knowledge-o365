@@ -91,17 +91,24 @@ using BlazorPro.Spinkit;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 65 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
+#line 77 "C:\sources\insti-knowledge-o365\Pages\FetchData.razor"
        
 
-    bool isLoaded;
+        bool isLoaded;
     private O365Data o365Data = null;
 
-    public ConsoleColor BtnBackground { get; set; } = ConsoleColor.Yellow;
+    public int selected {get; set; } = 1;
 
-    private async void OnButtonClick()
+    private void OnButtonClick()
     {
-        BtnBackground = ConsoleColor.Cyan;
+        if (selected == 1)
+        {
+            selected += 1;
+        }
+        else
+        {
+            selected = 1;
+        }
     }
 
     protected override async Task OnInitializedAsync()

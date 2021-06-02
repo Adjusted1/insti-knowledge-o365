@@ -44,15 +44,27 @@ else
     N:umber of Msgs to Cluster
     <InputText id="documents" @bind-Value="o365Data.NumberOfDocs"></InputText>
 
-    <button class="button" @ref=buttonSend onclick="(async () => await OnButtonClick())" id="submitter" type="submit">Organize / Cluster my Email</button>
+    <button class="button @selected" @ref=buttonSend onclick="(async () => await OnButtonClick())" id="submitter" type="submit">Organize / Cluster my Email</button>
 </EditForm>
 
 <style>
-    .button {
-        background-color: @BtnBackground;
+    .button1 {
+        background-color: deepskyblue;
         border: none;
         color: white;
-        padding: 15px 32px;
+        /*padding: 15px 32px;*/
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    .button2 {
+        background-color: lightcoral;
+        border: none;
+        color: white;
+        /*padding: 15px 32px;*/
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -64,14 +76,21 @@ else
 </style>
 @code {
 
-    bool isLoaded;
+        bool isLoaded;
     private O365Data o365Data = null;
 
-    public ConsoleColor BtnBackground { get; set; } = ConsoleColor.Yellow;
+    public int selected {get; set; } = 1;
 
-    private async void OnButtonClick()
+    private void OnButtonClick()
     {
-        BtnBackground = ConsoleColor.Cyan;
+        if (selected == 1)
+        {
+            selected += 1;
+        }
+        else
+        {
+            selected = 1;
+        }
     }
 
     protected override async Task OnInitializedAsync()

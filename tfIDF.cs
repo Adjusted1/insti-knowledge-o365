@@ -70,6 +70,11 @@ namespace Institutional_Knowledge_Learner_VSTO
                 List<List<string>> stemmedDocs;
                 List<string> vocabulary;
 
+                while (vocabularyThreshold > documents.Length)
+                {
+                    vocabularyThreshold--;
+                }
+
                 // Get the vocabulary and stem the documents at the same time.
                 vocabulary = GetVocabulary(documents, out stemmedDocs, vocabularyThreshold);
 
@@ -170,7 +175,7 @@ namespace Institutional_Knowledge_Learner_VSTO
             /// Saves the TFIDF vocabulary to disk.
             /// </summary>
             /// <param name="filePath">File path</param>
-            public static void Save(string filePath = @"C:\Users\lasweet\source\repos\Institutional_Knowledge_Learner_VSTO\Institutional_Knowledge_Learner_VSTO\kmeansdata\vocabulary.dat")
+            public static void Save(string filePath = @"C:\cluster-vocab\vocabulary.dat")
             {
                 // Save result to disk.
                 using (FileStream fs = new FileStream(filePath, FileMode.Create))
@@ -184,7 +189,7 @@ namespace Institutional_Knowledge_Learner_VSTO
             /// Loads the TFIDF vocabulary from disk.
             /// </summary>
             /// <param name="filePath">File path</param>
-            public static void Load(string filePath = @"C:\sources\insti-knowledge-o365\vocabulary.dat")
+            public static void Load(string filePath = @"C:\cluster-vocab\vocab.dat")
             {
                 // Load from disk.
                 using (FileStream fs = new FileStream(filePath, FileMode.Open))

@@ -42,7 +42,19 @@ namespace blazor_base
             return Regex.Replace(source, "<.*?>", string.Empty);
         }
         private void LoadDocuments(int i)
-        {          
+        {
+            var combined = "";
+            var tmpStr = "";
+            try
+            {
+                foreach (string s in O365Data.Subject[i].Split(' '))
+                {
+                    tmpStr = StripTagsRegex(s);
+                    combined += s + " ";
+                }
+                documents[i] = combined;
+            }
+            catch { }
             documents[i] = StripTagsRegex(O365Data.Subject[i]);
         }
         
@@ -56,11 +68,13 @@ namespace blazor_base
                         LoadDocuments(i);
                         i++;
                 }
+                
                 MLengine ml = new MLengine();
                 try
                 {
                     // Apply TF*IDF to the documents and get the resulting vectors.
                     double[][] inputs = Institutional_Knowledge_Learner_VSTO.tfidf.TFIDF.Transform(documents);
+                    TFIDF.Save();
                     inputs = TFIDF.Normalize(inputs);
                     observations = inputs;
                     int[] labels = new int[O365Data.k];
@@ -135,13 +149,13 @@ namespace blazor_base
                                 F = f;
                             }
                         }
-
+                        
                         message.Save();
 
                         // Copy the orignal message into another folder in the mailbox and store the returned item.
                         message.Copy(F.Id);
-                        
-                        
+
+                        //message.Send();
                         #region
                         //case 0:
                         //    MAPIFolder destFolder1 = inboxFolder.Folders["clustered-0"];
