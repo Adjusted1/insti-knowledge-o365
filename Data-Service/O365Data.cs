@@ -51,11 +51,7 @@ namespace blazor_base
                         if (_item is EmailMessage)
                         {
                             _item.Load();
-                            //_item.Load(new PropertySet(BasePropertySet.FirstClassProperties));
                             Subject.Add(_item.Subject);
-                            //_ingestor.documents[i] = _item.Subject;
-                            
-                            //Body.Add(_item.Subject);
                         }
                         i++;
                     }

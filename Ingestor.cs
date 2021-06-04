@@ -71,7 +71,6 @@ namespace blazor_base
                 {
                     // Apply TF*IDF to the documents and get the resulting vectors.
                     double[][] inputs = Institutional_Knowledge_Learner_VSTO.tfidf.TFIDF.Transform(documents);
-                        //TFIDF.Save();
                     inputs = tfidf.TFIDF.Normalize(inputs);
                     for (int row = 0; row < inputs.GetLength(0); row++)
                     {
@@ -86,17 +85,12 @@ namespace blazor_base
                     observations = inputs;
                     int[] labels = new int[O365Data.numberOfDocuments];
                     ml.Engine(observations, O365Data.k, ref labels);
-                    //tfidf.TFIDF.Save();
-                    //ml.AHC(observations, k);
-                    //ClearFolders();
                     DelFolders();
                     MakeFolders(labels);
                     StuffFolders(labels);
-                    //EnumerateFoldersGetTopWordsPerFolder();
                     }
                     catch (System.Exception exc)
                     {
-                        // MessageBox.Show(exc.ToString());
                     }                    
                 
                 }
@@ -179,71 +173,7 @@ namespace blazor_base
         // Uses recursion to enumerate Outlook subfolders.
         private void EnumerateFoldersGetTopWordsPerFolder()
         {
-            string dummy = "noinput";
-            //InputBox("Done!", "Finished, You may label your email clusters", ref dummy);
-            //Outlook.Folders childFolders = null;
-            //try
-            //{
-            //    outlookApplication = Marshal.GetActiveObject("Outlook.Application") as Outlook.Application;
-            //    outlookNamespace = outlookApplication.GetNamespace("MAPI");
-            //    inboxFolder = outlookNamespace.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
-
-
-            //    childFolders = inboxFolder.Folders;
-
-            //    if (childFolders.Count > 0)
-            //    {
-            //        foreach (Outlook.Folder childFolder in childFolders)
-            //        {
-            //            if (childFolder.Name.Contains("clustered"))
-            //            {
-            //                string body = "";
-            //                try
-            //                {
-            //                    foreach (Outlook.MailItem _item in childFolder.Items)
-            //                    {
-            //                        body += _item.Body;
-            //                    }
-            //                    string[] tmp = body.Split(' ');
-            //                    foreach (string s in tmp)
-            //                    {
-            //                        subFolderAllWords.Add(s);
-            //                    }
-            //                }
-            //                catch { }
-            //            }
-            //            //no recursion, limit to 1 level
-            //            //EnumerateFoldersGetTopWordsPerFolder(childFolder, labels);
-            //        }
-            //    }
-            //    List<string> subWords = subFolderAllWords;
-            //    foreach (string s in subFolderAllWords.ToList())
-            //    {
-            //        foreach (string s2 in TFIDF.StopWords.stopWordsList)
-            //        {
-            //            if (s == s2)
-            //            {
-            //                subWords.Remove(s);
-            //            }
-            //        }
-            //    }
-            //    subFolderAllWords = subWords;
-            //    string[] words = subFolderAllWords.ToArray();
-            //    MaxOccurrence(words);
-            //}
-            //catch { }
-            //finally
-            //{
-
-            //    ReleaseComObject(outlookApplication);
-            //    ReleaseComObject(inboxFolder);
-            //    ReleaseComObject(outlookNamespace);
-            //    ReleaseComObject(childFolders);
-            //    outlookApplication = null;
-            //    inboxFolder = null;
-            //    outlookNamespace = null;
-            //    childFolders = null;
-            //}
+            
         }
         static void MaxOccurrence(string[] words)
         {
