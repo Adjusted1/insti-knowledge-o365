@@ -25,7 +25,7 @@ namespace blazor_base
     }
     public class MLengine
     {
-        public int[] Labels { get; set; }
+        
         public MLengine() { }
         public void Engine(double[][] observations, int k, ref int[] labels)
         {

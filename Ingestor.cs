@@ -41,13 +41,13 @@ namespace blazor_base
         {
             return Regex.Replace(source, "<.*?>", string.Empty);
         }
-        private void LoadDocuments(int i)
+        private void LoadDocuments(int i, string subject)
         {
             var combined = "";
             var tmpStr = "";
             try
             {
-                foreach (string s in O365Data.Subject[i].Split(' '))
+                foreach (string s in subject.Split(' '))
                 {
                     tmpStr = StripTagsRegex(s);
                     combined += s + " ";
@@ -62,38 +62,44 @@ namespace blazor_base
         {
             try
             {
-                int i = 0;
-                foreach (string subj in O365Data.Subject)
+                for (int i = 0; i < O365Data.Subject.Count; i++)
                 {
-                    LoadDocuments(i);
-                    i++;
-                    if (i == O365Data.numberOfDocuments)
+                    LoadDocuments(i, O365Data.Subject[i]); 
+                }
+                MLengine ml = new MLengine();
+                try
+                {
+                    // Apply TF*IDF to the documents and get the resulting vectors.
+                    double[][] inputs = Institutional_Knowledge_Learner_VSTO.tfidf.TFIDF.Transform(documents);
+                        //TFIDF.Save();
+                    inputs = tfidf.TFIDF.Normalize(inputs);
+                    for (int row = 0; row < inputs.GetLength(0); row++)
                     {
-                        MLengine ml = new MLengine();
-                        try
+                        for (int column = 0; column < inputs[row].Length; column++)
                         {
-                            // Apply TF*IDF to the documents and get the resulting vectors.
-                            double[][] inputs = Institutional_Knowledge_Learner_VSTO.tfidf.TFIDF.Transform(documents);
-                            //TFIDF.Save();
-                            inputs = tfidf.TFIDF.Normalize(inputs);
-                            observations = inputs;
-                            int[] labels = new int[O365Data.numberOfDocuments];
-                            ml.Engine(observations, O365Data.k, ref labels);
-                            //tfidf.TFIDF.Save();
-                            //ml.AHC(observations, k);
-                            //ClearFolders();
-                            DelFolders();
-                            MakeFolders(labels);
-                            StuffFolders(labels);
-                            //EnumerateFoldersGetTopWordsPerFolder();
-                        }
-                        catch (System.Exception exc)
-                        {
-                            // MessageBox.Show(exc.ToString());
+                            if (Double.IsNaN(inputs[row][column]))
+                            {
+                                inputs[row][column] = 1.0;
+                            }
                         }
                     }
+                    observations = inputs;
+                    int[] labels = new int[O365Data.numberOfDocuments];
+                    ml.Engine(observations, O365Data.k, ref labels);
+                    //tfidf.TFIDF.Save();
+                    //ml.AHC(observations, k);
+                    //ClearFolders();
+                    DelFolders();
+                    MakeFolders(labels);
+                    StuffFolders(labels);
+                    //EnumerateFoldersGetTopWordsPerFolder();
+                    }
+                    catch (System.Exception exc)
+                    {
+                        // MessageBox.Show(exc.ToString());
+                    }                    
+                
                 }
-            }
             catch (System.Exception ex)
             { /*CALL JS Alert w/err */
             }
@@ -121,17 +127,19 @@ namespace blazor_base
         {
             try
             {
-                int i = 0;
-                foreach (string item in this.documents)
+               
+                for(int i = 0; i < documents.Length; i++)
                 {
-                    
-                        int j = labels[i];
-                        string folderName = "unlabeled - " + i.ToString();
+                        string subj = documents[i];
+                        
+                   
+                        int folderAssign = labels[i];
+                        string folderName = "unlabeled - " + folderAssign.ToString();
                         // Ceate an email message and identify the Exchange service.
                         EmailMessage message = new EmailMessage(ExchangeServices.exchange);
 
                         //// Add properties to the email message.
-                        message.Subject = item.ToString();
+                        message.Subject = subj.ToString();
                         
 
                         // set View
@@ -158,9 +166,6 @@ namespace blazor_base
 
                             }
                         }
-                        i++;                    
-
-                    if (i == O365Data.numberOfDocuments) { break; }
                 }
             }
             catch (ServiceResponseException sre) { System.Diagnostics.Debug.WriteLine(sre.ToString()); }

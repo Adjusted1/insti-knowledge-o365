@@ -65,7 +65,7 @@ namespace Institutional_Knowledge_Learner_VSTO
             /// <param name="documents">string[]</param>
             /// <param name="vocabularyThreshold">Minimum number of occurences of the term within all documents</param>
             /// <returns>double[][]</returns>
-            public static double[][] Transform(string[] documents, int vocabularyThreshold = 1)
+            public static double[][] Transform(string[] documents, int vocabularyThreshold = 5)
             {
                 List<List<string>> stemmedDocs;
                 List<string> vocabulary;
@@ -84,6 +84,7 @@ namespace Institutional_Knowledge_Learner_VSTO
                     }
                 }
 
+                
                 // Transform each document into a vector of tfidf values.
                 return TransformToTFIDFVectors(stemmedDocs, _vocabularyIDF);
             }
@@ -107,7 +108,6 @@ namespace Institutional_Knowledge_Learner_VSTO
                         // Term frequency = count how many times the term appears in this document.
                         double tf = doc.Where(d => d == vocab.Key).Count();
                         double tfidf = tf * vocab.Value;
-
                         vector.Add(tfidf);
                     }
 
@@ -161,14 +161,8 @@ namespace Institutional_Knowledge_Learner_VSTO
                 foreach (var value in vector)
                 {
                     // L2-norm: Xi = Xi / Sqrt(X0^2 + X1^2 + .. + Xn^2)
-                    if (SqrtSumSquared != 0)
-                    {
-                        result.Add(value / SqrtSumSquared);
-                    }
-                    else
-                    {
-                        result.Add(1);
-                    }
+                    result.Add(value / SqrtSumSquared);
+                  
                 }
 
                 return result.ToArray();
