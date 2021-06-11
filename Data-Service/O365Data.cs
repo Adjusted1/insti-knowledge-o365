@@ -41,9 +41,10 @@ namespace blazor_base
             LoggedIn = true;
             _ingestor = new Ingestor();
             int i = 0;
-            var items = ExchangeServices.exchange.FindItems(WellKnownFolderName.Inbox, ExchangeServices.itemView);
+            
             try
-            {                
+            {
+                var items = ExchangeServices.exchange.FindItems(WellKnownFolderName.Inbox, ExchangeServices.itemView);
                 foreach (Item _item in items)
                 {
                     try
@@ -83,7 +84,7 @@ namespace blazor_base
                 {
                     ingestor.process();
                 }
-                WriteCSV();
+                //WriteCSV();
             }
             Clustering = false;
             Clustered = true;
