@@ -7,9 +7,9 @@ corpus is extracted from email inbox using standard word to vector / TFIDF appro
 test history:
 -------------
 
-tested at a community college exchange online site -passed
+tested at a community college exchange online site unknown AD config -passed
 
-tested at a county government exchange online site w/hybrid AS -failed
+tested at a county government exchange online site w/hybrid AD config -failed
 
 
  
