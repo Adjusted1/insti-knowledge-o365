@@ -39,7 +39,7 @@ namespace blazor_base
             numberOfDocuments = Int32.Parse(NumberOfDocs);
             ExchangeServices.Login(Username, Password, numberOfDocuments);
             LoggedIn = true;
-            _ingestor = new Ingestor();
+            //_ingestor = new Ingestor();
             int i = 0;
             
             try
