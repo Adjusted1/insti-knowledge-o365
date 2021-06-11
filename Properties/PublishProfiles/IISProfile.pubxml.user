@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAL0RIEsmrIEaeSBeqoiPZtgAAAAACAAAAAAAQZgAAAAEAACAAAABqWMZ+pvSd5VLL23rmS7a8xVB/x8tyQR8SS26Z1ruuvAAAAAAOgAAAAAIAACAAAABGiDQx8pusg3NKop4Bml2bQug+KP4OqIVZhEREJn05QCAAAAA7rMdWO94dHmkx/U8JygikI7Pf5i07NreIAjvb3//0t0AAAAAzxa8XuttDPUOYAW30pKNYLKytyCWFIdfeRtuRNIFj7u2jBn/LjcphH1shpqd/ttZS0yFB5eXIbt63/QuwSgv9</EncryptedPassword>
+    <History>True|2021-06-07T22:50:13.5854129Z;False|2021-06-07T15:40:55.0280447-07:00;</History>
+    <_PublishTargetUrl>ftp://155.254.244.39/www.o365-inbox-categorizer-ML.somee.com/./</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Accord.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Accord.MachineLearning.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Accord.MachineLearning.GPL.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Accord.Math.Core.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Accord.Math.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Accord.Statistics.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="appsettings.Development.json">
+      <publishTime>02/16/2021 10:14:04</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>02/16/2021 10:14:04</publishTime>
+    </File>
+    <File Include="BlazorComponentUtilities.dll">
+      <publishTime>01/24/2020 22:58:16</publishTime>
+    </File>
+    <File Include="BlazorPro.Spinkit.dll">
+      <publishTime>03/20/2020 21:25:00</publishTime>
+    </File>
+    <File Include="blazor_base.deps.json">
+      <publishTime>06/07/2021 15:48:48</publishTime>
+    </File>
+    <File Include="blazor_base.dll">
+      <publishTime>06/07/2021 15:48:47</publishTime>
+    </File>
+    <File Include="blazor_base.exe">
+      <publishTime>06/07/2021 15:48:47</publishTime>
+    </File>
+    <File Include="blazor_base.pdb">
+      <publishTime>06/07/2021 15:48:47</publishTime>
+    </File>
+    <File Include="blazor_base.runtimeconfig.json">
+      <publishTime>06/02/2021 12:37:37</publishTime>
+    </File>
+    <File Include="blazor_base.Views.dll">
+      <publishTime>06/07/2021 15:48:47</publishTime>
+    </File>
+    <File Include="blazor_base.Views.pdb">
+      <publishTime>06/07/2021 15:48:47</publishTime>
+    </File>
+    <File Include="Centivus.EnglishStemmer.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Faso.Blazor.SpinKit.dll">
+      <publishTime>09/27/2019 20:14:14</publishTime>
+    </File>
+    <File Include="Institutional_Knowledge_Learner_VSTO.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="libman.json">
+      <publishTime>02/16/2021 10:14:04</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Authorization.dll">
+      <publishTime>01/18/2020 17:35:26</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Components.dll">
+      <publishTime>01/18/2020 17:36:34</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Components.Forms.dll">
+      <publishTime>01/18/2020 17:36:44</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Components.Web.dll">
+      <publishTime>01/18/2020 17:37:14</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Metadata.dll">
+      <publishTime>01/18/2020 17:33:54</publishTime>
+    </File>
+    <File Include="Microsoft.Data.DataView.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Microsoft.Exchange.WebServices.Auth.dll">
+      <publishTime>12/19/2014 18:02:34</publishTime>
+    </File>
+    <File Include="Microsoft.Exchange.WebServices.dll">
+      <publishTime>12/19/2014 18:02:34</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.DependencyInjection.Abstractions.dll">
+      <publishTime>01/18/2020 03:31:16</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.DependencyInjection.dll">
+      <publishTime>01/18/2020 03:31:12</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Logging.Abstractions.dll">
+      <publishTime>01/18/2020 03:32:22</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Options.dll">
+      <publishTime>01/18/2020 03:31:12</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Primitives.dll">
+      <publishTime>01/18/2020 03:31:54</publishTime>
+    </File>
+    <File Include="Microsoft.Graph.Core.dll">
+      <publishTime>03/25/2021 23:18:22</publishTime>
+    </File>
+    <File Include="Microsoft.Graph.dll">
+      <publishTime>05/20/2021 22:05:36</publishTime>
+    </File>
+    <File Include="Microsoft.Identity.Client.dll">
+      <publishTime>05/10/2021 16:15:00</publishTime>
+    </File>
+    <File Include="Microsoft.JSInterop.dll">
+      <publishTime>01/18/2020 03:34:42</publishTime>
+    </File>
+    <File Include="Microsoft.ML.Core.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Microsoft.ML.CpuMath.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Microsoft.ML.Data.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Microsoft.ML.Ensemble.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Microsoft.ML.FastTree.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Microsoft.ML.KMeansClustering.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Microsoft.ML.Maml.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Microsoft.ML.PCA.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Microsoft.ML.ResultProcessor.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Microsoft.ML.SamplesUtils.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Microsoft.ML.StandardLearners.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Microsoft.ML.Sweeper.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Microsoft.ML.Transforms.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Microsoft.Office.Tools.Common.v4.0.Utilities.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="Newtonsoft.Json.dll">
+      <publishTime>12/17/2020 22:07:51</publishTime>
+    </File>
+    <File Include="System.CodeDom.dll">
+      <publishTime>02/16/2021 10:14:03</publishTime>
+    </File>
+    <File Include="System.Diagnostics.DiagnosticSource.dll">
+      <publishTime>04/14/2020 22:48:06</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>06/07/2021 15:48:51</publishTime>
+    </File>
+    <File Include="wwwroot/css/bootstrap/bootstrap.min.css">
+      <publishTime>02/16/2021 10:14:04</publishTime>
+    </File>
+    <File Include="wwwroot/css/bootstrap/bootstrap.min.css.map">
+      <publishTime>02/16/2021 10:14:04</publishTime>
+    </File>
+    <File Include="wwwroot/css/open-iconic/FONT-LICENSE">
+      <publishTime>02/16/2021 10:14:04</publishTime>
+    </File>
+    <File Include="wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css">
+      <publishTime>02/16/2021 10:14:04</publishTime>
+    </File>
+    <File Include="wwwroot/css/open-iconic/font/fonts/open-iconic.eot">
+      <publishTime>02/16/2021 10:14:04</publishTime>
+    </File>
+    <File Include="wwwroot/css/open-iconic/font/fonts/open-iconic.otf">
+      <publishTime>02/16/2021 10:14:04</publishTime>
+    </File>
+    <File Include="wwwroot/css/open-iconic/font/fonts/open-iconic.svg">
+      <publishTime>02/16/2021 10:14:04</publishTime>
+    </File>
+    <File Include="wwwroot/css/open-iconic/font/fonts/open-iconic.ttf">
+      <publishTime>02/16/2021 10:14:04</publishTime>
+    </File>
+    <File Include="wwwroot/css/open-iconic/font/fonts/open-iconic.woff">
+      <publishTime>02/16/2021 10:14:04</publishTime>
+    </File>
+    <File Include="wwwroot/css/open-iconic/ICON-LICENSE">
+      <publishTime>02/16/2021 10:14:04</publishTime>
+    </File>
+    <File Include="wwwroot/css/open-iconic/README.md">
+      <publishTime>02/16/2021 10:14:04</publishTime>
+    </File>
+    <File Include="wwwroot/css/site.css">
+      <publishTime>03/11/2021 13:43:29</publishTime>
+    </File>
+    <File Include="wwwroot/favicon.ico">
+      <publishTime>02/16/2021 10:14:04</publishTime>
+    </File>
+    <File Include="wwwroot/_content/BlazorPro.Spinkit/spinkit.min.css">
+      <publishTime>03/20/2020 19:57:10</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

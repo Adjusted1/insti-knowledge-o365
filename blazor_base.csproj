@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>06f77d6d-dfa3-43cf-8319-a717c70ef99b</UserSecretsId>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>somee.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
